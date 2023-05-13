@@ -1,0 +1,15 @@
+<form #userForm="ngForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="user.name" required>
+  
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+  
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" [(ngModel)]="user.phone" required>
+  
+    <button type="button" (click)="createUser()" [disabled]="userForm.invalid">Create User</button>
+    <button type="button" (click)="updateUser()" [disabled]="userForm.invalid || !user.id">Update User</button>
+    <button type="button" (click)="deleteUser()" [disabled]="!user.id">Delete User</button>
+  </form>
+  

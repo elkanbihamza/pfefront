@@ -10,13 +10,17 @@ import { StudentsTableComponent } from './students-table/students-table.componen
 import { FormComponent } from './form/form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserFormComponent } from './user-form/user-form.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentsTableComponent,
-    FormComponent
+    FormComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +30,11 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     AppRoutingModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
