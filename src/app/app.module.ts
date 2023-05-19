@@ -7,11 +7,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { StudentsTableComponent } from './students-table/students-table.component';
-import { FormComponent } from './form/form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserFormComponent } from './user-form/user-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { UserDeleteFormComponent } from './user-delete-form/user-delete-form.component';
+import { Observable } from 'rxjs';
 
 
 
@@ -19,8 +22,8 @@ import { UserFormComponent } from './user-form/user-form.component';
   declarations: [
     AppComponent,
     StudentsTableComponent,
-    FormComponent,
-    UserFormComponent
+    UserFormComponent,
+    UserDeleteFormComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,9 @@ import { UserFormComponent } from './user-form/user-form.component';
     AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
   ],

@@ -1,52 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-}
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent implements OnInit {
-  user: User = { id: null, name: '', email: '', phone: '' };
-  users: User[] = [];
+export class UserFormComponent{
+  userForm : FormGroup;
+  user: any;
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
-    this.getUsers();
-  }
-
-  getUsers(): void {
-    this.http.get<User[]>('/api/users').subscribe(users => this.users = users);
-  }
-
-  createUser(): void {
-    this.http.post<User>('/api/users', this.user).subscribe(user => {
-      this.users.push(user);
-      this.user = { id: null, name: '', email: '', phone: '' };
+  constructor(private http: HttpClient, private formBuilder: FormBuilder) {
+    this.userForm =this.formBuilder.group({
+      id :['', Validators.required],
+      fname :['', Validators.required],
+      lname :['', Validators.required]
     });
-  }
+   }
 
-  updateUser(): void {
-    this.http.put<User>(`/api/users/${this.user.id}`, this.user).subscribe(user => {
-      const index = this.users.findIndex(u => u.id === user.id);
-      this.users[index] = user;
-      this.user = { id: null, name: '', email: '', phone: '' };
-    });
-  }
-
-  deleteUser(): void {
-    this.http.delete<void>(`/api/users/${this.user.id}`).subscribe(() => {
-      const index = this.users.findIndex(u => u.id === this.user.id);
-      this.users.splice(index, 1);
-      this.user = { id: null, name: '', email: '', phone: '' };
+  
+  createUser() {
+    const user = JSON.stringify(this.userForm.value);
+    console.log('User details :', user);
+    this.http.post<any>('/mavenpfe1/ajouter', user).subscribe({
+      next : response => {
+        console.log ('User created successfully :', response)
+      },
+      error : error => {
+        console.log ('Error creating user :',error)
+      }
     });
   }
 }

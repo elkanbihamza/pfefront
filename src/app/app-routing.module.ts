@@ -1,13 +1,13 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from "@angular/core";
 import { StudentsTableComponent } from './students-table/students-table.component';
-import { FormComponent } from './form/form.component';
-
+import { UserFormComponent } from './user-form/user-form.component';
+import { UserDeleteFormComponent } from './user-delete-form/user-delete-form.component';
 
 const appRoute : Routes =[
   {path: '', component:StudentsTableComponent},
-  {path: 'home', redirectTo : '', pathMatch: 'full'},
-  {path : 'create', component: FormComponent}
+  {path : 'create', component: UserFormComponent},
+  {path : 'delete/:userId', component: UserDeleteFormComponent}
 ]
 
 @NgModule({
