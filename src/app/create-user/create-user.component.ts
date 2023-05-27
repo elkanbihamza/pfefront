@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../service/user.service';
+import { UserApiService } from '../service/user.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-user',
@@ -12,35 +12,39 @@ export class CreateUserComponent implements OnInit {
   userForm!: FormGroup;
   hide = true;
 
-  constructor(private api : ApiService,
+  constructor(
+    private api: UserApiService,
     private formBuilder: FormBuilder,
-    private http: HttpClient
+    private dialogRef: MatDialogRef<CreateUserComponent>
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      id: ['', Validators.required],
+      id: [''],
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      is_responsable: ['']
+      password: [''],
+      is_responsable: ['', Validators.required],
+      is_active: ['']
     });
   }
 
-  onSubmit() {
-      console.log(this.userForm.value);
-      const userdata = this.userForm.value;
-      this.api.postUser(userdata).subscribe(
-        response => {
-          console.log('Registration successful:', response);
-        },
-        error => {
-          console.error('Registration failed:', error);
-        }
-      );
-
+  onSubmit(): void {
+    console.log(this.userForm.value);
+    const userdata = this.userForm.value;
+    this.api.createUser(userdata).subscribe(
+      response => {
+        console.log('Registration successful:', response);
+        this.dialogRef.close();
+      },
+      error => {
+        console.error('Registration failed:', error);
+      }
+    );
   }
-  
-}
 
+  onCancel(): void {
+    this.dialogRef.close();
+  }
+}

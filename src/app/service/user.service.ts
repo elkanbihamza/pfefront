@@ -1,34 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
 
-  private baseUrl: string = "/notyfsac/users"
-  constructor(private http: HttpClient) { }
+export class UserApiService {
 
-  postUser(registerObj: User) {
-    return this.http.post<User>(`${this.baseUrl}`, registerObj)
-  }
+private apiUrl = 'http://localhost:3000/users';
 
-  getUsers() {
-    return this.http.get<User[]>(`${this.baseUrl}`)
-  }
+constructor(private http: HttpClient) { }
 
-  updateUser(registerObj: User, id: number) {
-    return this.http.put<User>(`${this.baseUrl}/${id}`, registerObj)
-  }
+getUsers(): Observable<User[]> {
+  return this.http.get<User[]>(this.apiUrl);
+}
 
-  deleteUser(id: number) {
-    return this.http.delete<User>(`${this.baseUrl}/${id}`)
-  }
+getUserById(userId: number): Observable<User> {
+  const url = `${this.apiUrl}/${userId}`;
+  return this.http.get<User>(url);
+}
 
-  getUser(id: number) {
-    return this.http.get<User>(`${this.baseUrl}/${id}`)
-  }
+createUser(user: User): Observable<User> {
+  return this.http.post<User>(this.apiUrl, user);
+}
+
+updateUser(user: User): Observable<User> {
+  const url = `${this.apiUrl}/${user.id}`;
+  return this.http.put<User>(url, user);
+}
+
+deleteUser(userId: number): Observable<any> {
+  const url = `${this.apiUrl}/${userId}`;
+  return this.http.delete(url);
+}
 
 }
 

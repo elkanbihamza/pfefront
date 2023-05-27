@@ -4,8 +4,14 @@
   button{
     margin: 10px;
   }
-  
+
   mat-toolbar{
     margin-bottom: 20px;
+    background-color: var(--custom-primary) !important;
+    z-index: 100;
   }
-  
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }

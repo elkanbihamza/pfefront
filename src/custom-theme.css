@@ -1,0 +1,56 @@
+/* Define your primary color */
+:root {
+  --custom-primary: #4177FC;
+  --custom-secondary: #F0F4FF;
+  --custom-warn: red;
+}
+
+/* Create the theme object using your primary and accent colors */
+:root {
+  --custom-theme-primary: var(--custom-primary);
+  --custom-theme-accent: var(--custom-accent-500);
+}
+
+.mat-button{
+  background-color: var(--custom-primary) !important;
+  color: white !important;
+  border-radius: 40px !important;
+}
+
+.mat-warn-button{
+  background-color: var(--custom-warn);
+  color: white;
+  border-radius: 40px !important;
+}
+
+.button-icon{
+  color: var(--custom-primary);
+}
+
+.breadcrumb-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between; /* Added justify-content property */
+  margin-bottom: 10px;
+}
+
+.breadcrumb-link {
+  background-color: var(--custom-primary);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 40px;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.breadcrumb-separator {
+  color: var(--custom-primary);
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.breadcrumb-button {
+  margin-left: auto; /* Added margin-left:auto to push the button to the right */
+}

@@ -1,0 +1,297 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "lname": "Hamza",
+      "fname": "Aboutaleb",
+      "email": "hamza1@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 2,
+      "lname": "Hamza",
+      "fname": "El Kanbi",
+      "email": "hamza2@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": true,
+      "is_active": false
+    },
+    {
+      "id": 3,
+      "lname": "Hamza",
+      "fname": "Aboutaleb",
+      "email": "hamza3@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 4,
+      "lname": "Hamza",
+      "fname": "El ",
+      "email": "hamza4@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": true,
+      "is_active": false
+    },
+    {
+      "id": 5,
+      "lname": "Hamza",
+      "fname": "",
+      "email": "hamza5@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 6,
+      "lname": "Hamza",
+      "fname": "Aboutaleb",
+      "email": "hamza1@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 7,
+      "lname": "Hamza",
+      "fname": "El Kanbi",
+      "email": "hamza2@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": true,
+      "is_active": false
+    },
+    {
+      "id": 8,
+      "lname": "Hamza",
+      "fname": "Aboutaleb",
+      "email": "hamza3@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 9,
+      "lname": "Hamza",
+      "fname": "El ",
+      "email": "hamza4@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": true,
+      "is_active": false
+    },
+    {
+      "id": 10,
+      "lname": "Hamza",
+      "fname": "",
+      "email": "hamza5@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 11,
+      "lname": "Hamza",
+      "fname": "Aboutaleb",
+      "email": "hamza1@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 12,
+      "lname": "Hamza",
+      "fname": "El Kanbi",
+      "email": "hamza2@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": true,
+      "is_active": false
+    },
+    {
+      "id": 13,
+      "lname": "Hamza",
+      "fname": "Aboutaleb",
+      "email": "hamza3@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 14,
+      "lname": "Hamza",
+      "fname": "El ",
+      "email": "hamza4@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": true,
+      "is_active": false
+    },
+    {
+      "id": 15,
+      "lname": "Hamza",
+      "fname": "",
+      "email": "hamza5@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 16,
+      "lname": "Hamza",
+      "fname": "Aboutaleb",
+      "email": "hamza1@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 17,
+      "lname": "Hamza",
+      "fname": "El Kanbi",
+      "email": "hamza2@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": true,
+      "is_active": false
+    },
+    {
+      "id": 18,
+      "lname": "Hamza",
+      "fname": "Aboutaleb",
+      "email": "hamza3@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 19,
+      "lname": "Hamza",
+      "fname": "El ",
+      "email": "hamza4@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": true,
+      "is_active": false
+    },
+    {
+      "id": 20,
+      "lname": "Hamza",
+      "fname": "",
+      "email": "hamza5@gmail.com",
+      "categories": [
+        "SMIA",
+        "SMI",
+        "S1"
+      ],
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 21,
+      "fname": "Hamza",
+      "lname": "Hamza",
+      "email": "hamza.elkanbi@vivaceconsulting.ma",
+      "password": "",
+      "is_responsable": "true"
+    },
+    {
+      "id": 22,
+      "fname": "",
+      "lname": "",
+      "email": "",
+      "password": "",
+      "is_responsable": ""
+    },
+    {
+      "id": 23,
+      "fname": "El Kanbi",
+      "lname": "Hamza",
+      "email": "hamza@gmail.com",
+      "is_responsable": "true"
+    }
+  ],
+  "announcements": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "categories": {
+    "name": "typicode"
+  }
+}

@@ -1,25 +1,37 @@
-/* .login-card{
-    padding: 1%;
-    background-color: #F0F4FF;
-    margin: auto;
-    width: 30%;
-}
-mat-form-field {
-    width: 80%;
-    display: ;
-} 
-p{
-    margin: auto !important;
-} */
+@import 'C:\Users\hamza\Desktop\pfefront\src\custom-theme.css';
 
-
-.login-card{
-    background-color: #F0F4FF;
-    width: 30%;
-    margin: auto;
-    padding: 1%;
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  margin: auto !important;
 }
 
-/* p{
-    margin: auto;
-} */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background-color: #f1f1f1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin:auto;
+}
+
+.login-form mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-form button {
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.submit-button{
+  background-color: var(--custom-primary);
+  color: white !important;
+  border-radius: 40px !important;
+}

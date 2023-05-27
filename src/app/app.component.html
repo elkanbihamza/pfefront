@@ -1,12 +1,14 @@
-<mat-toolbar color="primary">
-  <h1>Users management app</h1>
-  <span class="example-spacer"></span>
-  <button mat-raised-button routerLink="list">
-    Liste des étudiants
-  </button>
-  <button mat-raised-button routerLink="create">
-    Créer un étudiant
-  </button>
+<div class="sticky-header">
+  <mat-toolbar color="primary">
+    <h1>Users management app</h1>
+    <span class="example-spacer"></span>
+    <button mat-raised-button routerLink="users">
+      Liste des étudiants
+    </button>
+    <button mat-raised-button routerLink="create">
+      Créer un étudiant
+    </button>
+  </mat-toolbar>
+</div>
 
-</mat-toolbar>
 <router-outlet></router-outlet>

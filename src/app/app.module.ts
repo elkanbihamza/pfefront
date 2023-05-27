@@ -17,9 +17,11 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
-import { ApiService } from './service/user.service';
+import { UserApiService } from './service/user.service';
 import { AuthService } from './service/auth.service';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -46,10 +48,12 @@ import {MatRadioModule} from '@angular/material/radio';
     MatPaginatorModule,
     MatSortModule,
     MatRadioModule,
+    MatSlideToggleModule,
+    MatDialogModule
 
   ],
   providers: [
-    ApiService,
+    UserApiService,
     AuthService
   ],
   bootstrap: [AppComponent]

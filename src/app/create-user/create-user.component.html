@@ -1,4 +1,14 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<h2>Création d'un nouvel utilisateur</h2>
+<mat-dialog-content>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Saisissez le nom" formControlName="lname">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+    </div>
+
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Prénom</mat-label>
@@ -7,14 +17,6 @@
       </mat-form-field>
     </div>
 
-    <div>
-      <mat-form-field appearance="outline">
-        <mat-label>Nom</mat-label>
-        <input matInput placeholder="Saisissez le nom" formControlName="lname">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
-    </div>
-    
     <div>
       <mat-form-field appearance="outline">
         <mat-label>E-mail</mat-label>
@@ -34,6 +36,10 @@
         </mat-radio-button>
       </mat-radio-group>
     </section>
-    <button type="submit">Créer</button>
   </form>
-  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button class="mat-warn-button" mat-dialog-close>Annuler</button>
+  <button mat-button class="mat-button" [mat-dialog-close]="true" cdkFocusInitial>Enregistrer</button>
+</mat-dialog-actions>
+

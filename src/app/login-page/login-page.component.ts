@@ -1,7 +1,7 @@
 import { AuthService } from './../service/auth.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../service/user.service';
+import { UserApiService } from '../service/user.service';
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginPageComponent {
   loginForm! : FormGroup;
   hide =true;
 
-  constructor(private api : ApiService, private auth : AuthService,
+  constructor(private api : UserApiService, private auth : AuthService,
     private formBuilder: FormBuilder, private route : Router
   ) {}
 
