@@ -1,24 +1,18 @@
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from "@angular/core";
-import { StudentsTableComponent } from './students-table/students-table.component';
-import { UserFormComponent } from './user-form/user-form.component';
-import { UserDeleteFormComponent } from './user-delete-form/user-delete-form.component';
+import { CreateUserComponent } from './create-user/create-user.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
-const appRoute : Routes =[
-  {path: '', component:StudentsTableComponent},
-  {path : 'create', component: UserFormComponent},
-  {path : 'delete/:userId', component: UserDeleteFormComponent}
-]
+const routes: Routes = [
+  {path: '',redirectTo:'login', pathMatch:'full'},
+  {path: 'login', component: LoginPageComponent},
+  {path: 'list', component: UsersListComponent},
+  {path: 'create', component: CreateUserComponent},
+];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoute)
-  ],
-  exports : [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule{
-
-}
+export class AppRoutingModule { }

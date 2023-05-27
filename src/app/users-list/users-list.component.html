@@ -1,0 +1,70 @@
+<div class="table-container">
+  <div class="table-header">
+    <mat-form-field>
+      <mat-label>Rechercher un étudiant</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Hamza" #input>
+    </mat-form-field>
+  </div>
+    
+    <div class="mat-elevation-z8">
+      <div class="table-scroll">
+        <table mat-table [dataSource]="dataSource" matSort>
+  
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 5%;"> ID </th>
+            <td mat-cell *matCellDef="let row" style="width: 10%;"> {{row.id}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="fname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Prénom </th>
+            <td mat-cell *matCellDef="let row" style="width: 25%;"> {{row.fname}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="lname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Nom </th>
+            <td mat-cell *matCellDef="let row" style="width: 25%;"> {{row.lname}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%;"> Adresse mail </th>
+            <td mat-cell *matCellDef="let row" style="width: 30%;"> {{row.email}} </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="categories">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%;"> Catégorie </th>
+            <td mat-cell *matCellDef="let row" style="width: 20%;"> {{ row.categories }}</td>
+          </ng-container>
+    
+          <ng-container matColumnDef="is_responsible">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;"> Responsable? </th>
+            <td mat-cell *matCellDef="let row" style="width: 10%;"> 
+              <mat-icon class="mat-icon-true" *ngIf="row.is_responsible">check</mat-icon>
+              <mat-icon class="mat-icon-false" *ngIf="!row.is_responsible">clear</mat-icon>
+            </td>
+          </ng-container>
+    
+          <ng-container matColumnDef="is_active">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;"> Actif? </th>
+            <td mat-cell *matCellDef="let row" style="width: 10%;"> 
+              <mat-icon class="mat-icon-true" *ngIf="row.is_active">check</mat-icon>
+              <mat-icon class="mat-icon-false" *ngIf="!row.is_active">clear</mat-icon> </td>
+            </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="displayedColumns ; sticky :true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      </div>
+      
+
+      <div class="table-footer">
+        <mat-paginator [pageSizeOptions]="[5, 10, 15 , 20 , 25]" aria-label="Select page of users"></mat-paginator>
+      </div>
+      
+    </div>
+  </div>
+  

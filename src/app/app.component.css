@@ -1,19 +1,11 @@
 .example-spacer {
-  flex: 1 1 auto;
-}
-section {
-  display: table;
-}
-
-.example-button-row .mat-mdc-button-base {
-  margin: 8px 8px 8px 0;
-}
-
-.mat-mdc-outlined-button:not(:disabled){
-  border-color: white !important;
-}
-
-/* .mat-mdc-icon-button{
-  border-color: white !important;
-  border-radius: 0% !important;
-} */
+    flex: 1 1 auto;
+  }
+  button{
+    margin: 10px;
+  }
+  
+  mat-toolbar{
+    margin-bottom: 20px;
+  }
+  

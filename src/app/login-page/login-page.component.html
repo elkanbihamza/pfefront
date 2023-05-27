@@ -1,0 +1,27 @@
+<div class="login-card">
+    <div class="fields">
+        <form>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput placeholder="Saisissez l'adresse mail'">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" >
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </p>
+        <p>
+            <button mat-raised-button color="primary" onclick="onsubmit()">Se connecter</button>
+        </p>
+        <p>
+            <button mat-raised-button color="primary">Continuer en tant qu'invité</button>
+        </p>
+        </form>
+    </div>
+</div>

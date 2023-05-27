@@ -1,0 +1,52 @@
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+.table-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* .table-header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+} */
+
+.table-scroll {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+  .table-footer {
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    z-index: 1;
+  }
+
+  .mat-header-cell {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+  }
+
+  .mat-icon-true {
+    color: rgb(54, 228, 54);
+  }
+
+  .mat-icon-false {
+    color: rgb(255, 0, 0);
+  }

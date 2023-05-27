@@ -1,0 +1,25 @@
+/* .login-card{
+    padding: 1%;
+    background-color: #F0F4FF;
+    margin: auto;
+    width: 30%;
+}
+mat-form-field {
+    width: 80%;
+    display: ;
+} 
+p{
+    margin: auto !important;
+} */
+
+
+.login-card{
+    background-color: #F0F4FF;
+    width: 30%;
+    margin: auto;
+    padding: 1%;
+}
+
+/* p{
+    margin: auto;
+} */
