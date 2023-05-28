@@ -2,13 +2,10 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { HttpClient } from '@angular/common/http';
 import { UserApiService } from '../service/user.service';
-import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
-
 
 @Component({
   selector: 'app-users-list',
@@ -22,7 +19,7 @@ export class UsersListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private userapi: UserApiService, private dialog :MatDialog) {
+  constructor(private userapi: UserApiService, private dialog: MatDialog) {
     this.dataSource = new MatTableDataSource<User>();
   }
 
@@ -48,9 +45,17 @@ export class UsersListComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
+      if (result) {
+        this.refreshUsersTable();
+      }
     });
   }
 
+  refreshUsersTable(): void {
+    this.userapi.getUsers().subscribe((data: User[]) => {
+      this.dataSource.data = data;
+    });
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

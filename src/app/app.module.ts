@@ -22,6 +22,7 @@ import { AuthService } from './service/auth.service';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     AppComponent,
     CreateUserComponent,
     LoginPageComponent,
-    UsersListComponent
+    UsersListComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
