@@ -2,15 +2,15 @@
   <div class="breadcrumb-container">
     <a routerLink="" class="breadcrumb-link">Home</a>
     <a class="breadcrumb-separator">/</a>
-    <a routerLink="" class="breadcrumb-link">Liste des utilisateurs</a>
+    <a routerLink="" class="breadcrumb-link">Liste des catégories</a>
     <div class="breadcrumb-button">
-      <button mat-raised-button class="mat-button" (click)="openDialog()">Créer un étudiant</button>
+      <button mat-raised-button class="mat-button" (click)="openDialog()">Créer une catégorie</button>
     </div>
   </div>
 
   <div class="table-header">
     <mat-form-field>
-      <mat-label>Rechercher un étudiant</mat-label>
+      <mat-label>Rechercher une catégorie</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Hamza" #input>
     </mat-form-field>
   </div>
@@ -19,38 +19,17 @@
     <div class="table-scroll">
       <table mat-table [dataSource]="dataSource" matSort>
 
-        <ng-container matColumnDef="id">
+        <ng-container matColumnDef="code">
           <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 5%;"> ID </th>
-          <td mat-cell *matCellDef="let row">{{row.id}}</td>
+          <td mat-cell *matCellDef="let row">{{row.code}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="fname">
+        <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Prénom </th>
-          <td mat-cell *matCellDef="let row">{{row.fname}}</td>
+          <td mat-cell *matCellDef="let row">{{row.title}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="lname">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Nom </th>
-          <td mat-cell *matCellDef="let row">{{row.lname}}</td>
-        </ng-container>
 
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%;"> Adresse mail </th>
-          <td mat-cell *matCellDef="let row">{{row.email}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="categories">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%;"> Catégorie </th>
-          <td mat-cell *matCellDef="let row">{{row.categories}}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="is_responsible">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;"> Responsable? </th>
-          <td mat-cell *matCellDef="let row">
-            <mat-icon class="mat-icon-true" *ngIf="row.is_responsible">check</mat-icon>
-            <mat-icon class="mat-icon-false" *ngIf="!row.is_responsible">clear</mat-icon>
-          </td>
-        </ng-container>
 
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Actions </th>
@@ -59,7 +38,6 @@
               <button mat-icon-button (click)="openEditDialog(row)">
                 <mat-icon class="button-icon">edit</mat-icon>
               </button>
-              <mat-slide-toggle [checked]="!row.is_active"></mat-slide-toggle>
             </div>
           </td>
         </ng-container>

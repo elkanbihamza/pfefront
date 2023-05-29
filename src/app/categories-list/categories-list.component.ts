@@ -1,26 +1,28 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Category } from '../models/category.model';
 import { MatTableDataSource } from '@angular/material/table';
-import { UserApiService } from '../service/user.service';
-import { User } from '../models/user.model';
+import { CategoryApiService } from '../service/category.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateUserComponent } from '../create-user/create-user.component';
+import { CreateCategoryComponent } from '../create-category/create-category.component';
 
 @Component({
-  selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css'],
+  selector: 'app-categories-list',
+  templateUrl: './categories-list.component.html',
+  styleUrls: ['./categories-list.component.css']
 })
-export class UsersListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'categories', 'is_responsible', 'actions'];
-  dataSource: MatTableDataSource<User>;
+export class CategoriesListComponent {
+
+
+  displayedColumns: string[] = ['code', 'title', 'actions'];
+  dataSource: MatTableDataSource<Category>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private userapi: UserApiService, private dialog: MatDialog) {
-    this.dataSource = new MatTableDataSource<User>();
+  constructor(private api: CategoryApiService, private dialog: MatDialog) {
+    this.dataSource = new MatTableDataSource<Category>();
   }
 
   ngAfterViewInit() {
@@ -29,17 +31,17 @@ export class UsersListComponent implements AfterViewInit {
   }
 
   ngOnInit() {
-    this.fetchUsers();
+    this.fetchCategories();
   }
 
-  fetchUsers() {
-    this.userapi.getUsers().subscribe((data: User[]) => {
+  fetchCategories() {
+    this.api.getCategories().subscribe((data: Category[]) => {
       this.dataSource.data = data;
     });
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(CreateUserComponent, {
+    const dialogRef = this.dialog.open(CreateCategoryComponent, {
       width: '500px',
     });
 
@@ -51,8 +53,8 @@ export class UsersListComponent implements AfterViewInit {
     });
   }
 
-  openEditDialog(row: User): void {
-    const dialogRef = this.dialog.open(CreateUserComponent, {
+  openEditDialog(row: Category): void {
+    const dialogRef = this.dialog.open(CreateCategoryComponent, {
       width: '500px',
       data: row // Pass the row data to the dialog component
     });
@@ -67,7 +69,7 @@ export class UsersListComponent implements AfterViewInit {
 
 
   refreshUsersTable(): void {
-    this.userapi.getUsers().subscribe((data: User[]) => {
+    this.api.getCategories().subscribe((data: Category[]) => {
       this.dataSource.data = data;
     });
   }

@@ -1,0 +1,19 @@
+.table-scroll {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  padding: 8px; /* Adjust the cell padding as needed */
+}

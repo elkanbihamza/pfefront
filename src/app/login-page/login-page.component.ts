@@ -31,7 +31,11 @@ export class LoginPageComponent {
       debugger
       console.log('response', response);
       localStorage.setItem('token', response.token);
-      this.route.navigateByUrl('/list');
+      this.route.navigateByUrl('/users');
     })
+  }
+
+  onLogin(){
+    this.route.navigateByUrl('/users');
   }
 }

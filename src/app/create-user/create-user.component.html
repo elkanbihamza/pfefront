@@ -27,11 +27,11 @@
 
     <section class="example-section">
       <label class="example-margin">Statut:</label>
-      <mat-radio-group formControlName="is_responsable">
-        <mat-radio-button class="example-margin" value="true">
+      <mat-radio-group formControlName="is_responsible">
+        <mat-radio-button class="example-margin" [value]="true">
           Responsable
         </mat-radio-button>
-        <mat-radio-button class="example-margin" value="false">
+        <mat-radio-button class="example-margin" [value]="false">
           Etudiant
         </mat-radio-button>
       </mat-radio-group>

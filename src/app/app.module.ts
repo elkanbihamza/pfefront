@@ -23,6 +23,11 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { AnnouncementsListComponent } from './announcements-list/announcements-list.component';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { CreateCategoryComponent } from './create-category/create-category.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -31,7 +36,10 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     CreateUserComponent,
     LoginPageComponent,
     UsersListComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    AnnouncementsListComponent,
+    CategoriesListComponent,
+    CreateCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +59,10 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     MatSortModule,
     MatRadioModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatOptionModule
+
 
   ],
   providers: [

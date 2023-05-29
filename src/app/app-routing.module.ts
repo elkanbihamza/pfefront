@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { AnnouncementsListComponent } from './announcements-list/announcements-list.component';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
 
 const routes: Routes = [
-  {path: '',redirectTo:'login', pathMatch:'full'},
+  {path: '',redirectTo:'announcements', pathMatch:'full'},
+  {path: 'announcements', component: AnnouncementsListComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'users', component: UsersListComponent},
-  {path: 'create', component: CreateUserComponent},
+  { path: 'categories', component: CategoriesListComponent},
 ];
 
 @NgModule({
