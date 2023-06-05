@@ -27,7 +27,7 @@ createCategory(category : Category): Observable<Category> {
 }
 
 updateCategory(category : Category): Observable<Category> {
-  const url = `${this.apiUrl}/${category.id}`;
+  const url = `${this.apiUrl}/${category.code}`;
   return this.http.put<Category>(url, category);
 }
 

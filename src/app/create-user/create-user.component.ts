@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserApiService } from '../service/user.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Category } from '../models/category.model';
+import { CategoryApiService } from '../service/category.service';
 
 @Component({
   selector: 'app-create-user',
@@ -13,9 +15,13 @@ export class CreateUserComponent implements OnInit {
   hide = true;
   title!: string;
   userData: any;
+  categories: Category[] = [];
+  flatCategories: Category[] = [];
+  selectedCategory: string[] = [];
 
   constructor(
-    private api: UserApiService,
+    private userapi: UserApiService,
+    private catapi: CategoryApiService,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CreateUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -29,11 +35,12 @@ export class CreateUserComponent implements OnInit {
       fname: [this.userData?.fname || '', Validators.required],
       lname: [this.userData?.lname || '', Validators.required],
       email: [this.userData?.email || '', [Validators.required, Validators.email]],
-      password: [''],
+      belongs_to: [this.userData?.belongs_to || '', Validators.required],
+      is_responsible_of: [this.userData?.is_responsible_of || '', Validators.required],
       is_responsible: [this.userData?.is_responsible || false, Validators.required],
-      is_active: [this.userData?.is_active || true]
+      is_active: [this.userData?.is_active || true],
     });
-
+    this.fetchCategories();
     this.title = this.data.title;
   }
 
@@ -41,7 +48,7 @@ export class CreateUserComponent implements OnInit {
     console.log(this.userForm.value);
     const userdata = this.userForm.value;
     if (userdata.id) {
-      this.api.updateUser(userdata).subscribe(
+      this.userapi.updateUser(userdata).subscribe(
         response => {
           console.log('Update successful:', response);
           this.dialogRef.close(true);
@@ -51,7 +58,7 @@ export class CreateUserComponent implements OnInit {
         }
       );
     } else {
-      this.api.createUser(userdata).subscribe(
+      this.userapi.createUser(userdata).subscribe(
         response => {
           console.log('Registration successful:', response);
           this.dialogRef.close(true);
@@ -63,7 +70,32 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
+  fetchCategories() {
+    this.catapi.getCategories().subscribe(
+      categories => {
+        this.categories = categories;
+        this.flattenCategories(categories);
+      },
+      error => {
+        console.log('Error fetching categories:', error);
+      }
+    );
+  }
+
+  flattenCategories(categories: Category[]) {
+    for (const category of categories) {
+      this.flatCategories.push(category);
+      if (category.children.length > 0) {
+        this.flattenCategories(category.children);
+      }
+    }
+  }
+
   onCancel(): void {
     this.dialogRef.close();
+  }
+
+  get showCategoryControl(): FormControl {
+    return this.userForm.get('is_responsible') as FormControl;
   }
 }

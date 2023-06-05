@@ -5,7 +5,12 @@
       "fname": "El Kanbi",
       "lname": "Hamza",
       "email": "Hamzaelkanbi2002@gmail.com",
-      "password": "",
+      "belongs_to": [
+        "C1"
+      ],
+      "is_responsible_of": [
+        "CC2"
+      ],
       "is_responsible": true,
       "is_active": true
     },
@@ -14,10 +19,11 @@
       "fname": "Hamza",
       "lname": "HHHHH",
       "email": "HHH@gmail.com",
-      "password": "",
-      "categories": [
-        "SMI",
-        "S5"
+      "belongs_to": [
+        "CC1"
+      ],
+      "is_responsible_of": [
+        "CC2"
       ],
       "is_responsible": true,
       "is_active": true
@@ -27,8 +33,13 @@
       "fname": "Hamza",
       "lname": "El Kanbi",
       "email": "hamza@gmail.com",
-      "password": "",
-      "is_responsible": true,
+      "belongs_to": [
+        "C2"
+      ],
+      "is_responsible_of": [
+        "C1"
+      ],
+      "is_responsible": false,
       "is_active": true
     },
     {
@@ -92,6 +103,91 @@
       "email": "nknz@gmail.com",
       "password": "",
       "is_responsible": true,
+      "is_active": true
+    },
+    {
+      "id": 11,
+      "fname": "El Kanbi",
+      "lname": "Hamza",
+      "email": "hamza@gmail.com",
+      "category": "",
+      "password": "",
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 12,
+      "fname": "Hamza",
+      "lname": "El Kanbi",
+      "email": "hamza@gmail.com",
+      "category": "CC2",
+      "password": "",
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 13,
+      "fname": "Hamza",
+      "lname": "El Kanbi",
+      "email": "hamza@gmail.com",
+      "category": [
+        "CC2",
+        "C3"
+      ],
+      "password": "",
+      "is_responsible": false,
+      "is_active": true
+    },
+    {
+      "id": 14,
+      "fname": "Hamza",
+      "lname": "El Kanbi",
+      "email": "Hamza@gmail.com",
+      "category": [
+        "C1"
+      ],
+      "is_responsible": true,
+      "is_active": true
+    },
+    {
+      "id": 15,
+      "fname": "Hamzzzzza",
+      "lname": "El Kanbbbbbbi",
+      "email": "hamza@gmail.com",
+      "belongs_to": [
+        "C3"
+      ],
+      "is_responsible_of": [
+        "C2"
+      ],
+      "is_responsible": true,
+      "is_active": true
+    },
+    {
+      "id": 16,
+      "fname": "Hamza",
+      "lname": "Ab",
+      "email": "abhamza@gmail.com",
+      "belongs_to": [
+        "CC1"
+      ],
+      "is_responsible_of": [
+        "C1",
+        "C3"
+      ],
+      "is_responsible": true,
+      "is_active": true
+    },
+    {
+      "id": 17,
+      "fname": "Hamza",
+      "lname": "El Kanbi",
+      "email": "hamza@gmail.com",
+      "belongs_to": [
+        "C1"
+      ],
+      "is_responsible_of": "",
+      "is_responsible": false,
       "is_active": true
     }
   ],
@@ -167,19 +263,30 @@
   ],
   "categories": [
     {
-      "id": 1,
-      "code": "Halz",
-      "title": "nnjnfje,dk,k"
+      "code": "C1",
+      "title": "Category 1",
+      "children": []
     },
     {
-      "id": 2,
-      "code": "SMI S6",
-      "title": "Sciences math info Semestre 6"
+      "code": "C2",
+      "title": "Category 2",
+      "children": [
+        {
+          "code": "CC1",
+          "title": "Child Category 1",
+          "children": []
+        },
+        {
+          "code": "CC2",
+          "title": "Child Category 2",
+          "children": []
+        }
+      ]
     },
     {
-      "id": 3,
-      "code": "SMI",
-      "title": "SCiences maths info"
+      "code": "C3",
+      "title": "Category 3",
+      "children": []
     }
   ]
 }

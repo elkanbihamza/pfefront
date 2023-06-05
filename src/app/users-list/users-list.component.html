@@ -2,7 +2,7 @@
   <div class="breadcrumb-container">
     <a routerLink="" class="breadcrumb-link">Home</a>
     <a class="breadcrumb-separator">/</a>
-    <a routerLink="" class="breadcrumb-link">Liste des utilisateurs</a>
+    <a routerLink="users" class="breadcrumb-link">Liste des utilisateurs</a>
     <div class="breadcrumb-button">
       <button mat-raised-button class="mat-button" (click)="openDialog()">Créer un étudiant</button>
     </div>
@@ -77,7 +77,7 @@
     </div>
 
     <div class="table-footer">
-      <mat-paginator [pageSizeOptions]="[5, 10, 15, 20, 25]" aria-label="Select page of users"></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[10, 15, 20, 25]" aria-label="Select page of users"></mat-paginator>
     </div>
 
   </div>
