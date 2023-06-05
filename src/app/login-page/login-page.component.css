@@ -31,7 +31,7 @@
 }
 
 .submit-button{
-  background-color: var(--custom-primary);
+  background-color: var(--custom-primary) !important;
   color: white !important;
   border-radius: 40px !important;
 }

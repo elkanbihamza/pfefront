@@ -12,9 +12,7 @@ import { CreateCategoryComponent } from '../create-category/create-category.comp
   templateUrl: './categories-list.component.html',
   styleUrls: ['./categories-list.component.css']
 })
-export class CategoriesListComponent {
-
-
+export class CategoriesListComponent implements AfterViewInit {
   displayedColumns: string[] = ['code', 'title', 'actions'];
   dataSource: MatTableDataSource<Category>;
 
@@ -25,16 +23,16 @@ export class CategoriesListComponent {
     this.dataSource = new MatTableDataSource<Category>();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.fetchCategories();
   }
 
-  fetchCategories() {
+  fetchCategories(): void {
     this.api.getCategories().subscribe((data: Category[]) => {
       this.dataSource.data = data;
     });
@@ -43,12 +41,15 @@ export class CategoriesListComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateCategoryComponent, {
       width: '500px',
+      data: {
+        isEditing: false
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
       if (result) {
-        this.refreshUsersTable();
+        this.refreshCategoriesTable();
       }
     });
   }
@@ -56,25 +57,25 @@ export class CategoriesListComponent {
   openEditDialog(row: Category): void {
     const dialogRef = this.dialog.open(CreateCategoryComponent, {
       width: '500px',
-      data: row // Pass the row data to the dialog component
+      data: {
+        isEditing: true,
+        category : row
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
       if (result) {
-        this.refreshUsersTable();
+        this.refreshCategoriesTable();
       }
     });
   }
 
-
-  refreshUsersTable(): void {
-    this.api.getCategories().subscribe((data: Category[]) => {
-      this.dataSource.data = data;
-    });
+  refreshCategoriesTable(): void {
+    this.fetchCategories();
   }
 
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

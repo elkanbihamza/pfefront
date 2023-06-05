@@ -5,6 +5,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { AnnouncementsListComponent } from './announcements-list/announcements-list.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 
 const routes: Routes = [
   {path: '',redirectTo:'announcements', pathMatch:'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginPageComponent},
   {path: 'users', component: UsersListComponent},
   { path: 'categories', component: CategoriesListComponent},
+  { path : 'create-announcement', component: CreateAnnouncementComponent}
 ];
 
 @NgModule({

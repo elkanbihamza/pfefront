@@ -11,26 +11,31 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class CreateUserComponent implements OnInit {
   userForm!: FormGroup;
   hide = true;
+  title!: string;
+  userData: any;
 
   constructor(
     private api: UserApiService,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CreateUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) {
+    this.userData = data.user;
+  }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      id: [this.data?.id || ''],
-      fname: [this.data?.fname || '', Validators.required],
-      lname: [this.data?.lname || '', Validators.required],
-      email: [this.data?.email || '', [Validators.required, Validators.email]],
+      id: [this.userData?.id || ''],
+      fname: [this.userData?.fname || '', Validators.required],
+      lname: [this.userData?.lname || '', Validators.required],
+      email: [this.userData?.email || '', [Validators.required, Validators.email]],
       password: [''],
-      is_responsible: [this.data?.is_responsible || false, Validators.required],
-      is_active: ['']
+      is_responsible: [this.userData?.is_responsible || false, Validators.required],
+      is_active: [this.userData?.is_active || true]
     });
-  }
 
+    this.title = this.data.title;
+  }
 
   onSubmit(): void {
     console.log(this.userForm.value);

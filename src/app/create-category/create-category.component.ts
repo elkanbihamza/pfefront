@@ -10,25 +10,29 @@ import { CategoryApiService } from '../service/category.service';
 })
 export class CreateCategoryComponent implements OnInit {
   categoryForm! : FormGroup;
+  categoryData: any;
 
   constructor(
     private api: CategoryApiService,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CreateCategoryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) {
+    this.categoryData = data.category;
+  }
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
-      code: [this.data?.code || '', [Validators.required]],
-      title: [this.data?.title || '', [Validators.required]]
+      id: [this.categoryData?.id || ''],
+      code: [this.categoryData?.code || '', [Validators.required]],
+      title: [this.categoryData?.title || '', [Validators.required]]
     });
   }
 
   onSubmit(): void {
     console.log(this.categoryForm.value);
     const categorydata = this.categoryForm.value;
-    if (categorydata.code) {
+    if (categorydata.id) {
       this.api.updateCategory(categorydata).subscribe(
         response => {
           console.log('Update successful:', response);

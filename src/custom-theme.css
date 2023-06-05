@@ -52,5 +52,20 @@
 }
 
 .breadcrumb-button {
-  margin-left: auto; /* Added margin-left:auto to push the button to the right */
+  margin-left: auto;
 }
+
+/* .edit-icon{
+  background-color: #dde7ff;
+  border-radius: 40px;
+} */
+
+.dialog .mat-dialog-container {
+  background-color: #F0F4FF;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+

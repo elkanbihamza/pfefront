@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserApiService } from '../service/user.service';
 import { User } from '../models/user.model';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
 
 @Component({
@@ -34,14 +34,36 @@ export class UsersListComponent implements AfterViewInit {
 
   fetchUsers() {
     this.userapi.getUsers().subscribe((data: User[]) => {
+      console.log(data);
       this.dataSource.data = data;
     });
   }
 
+  toggleUserActive(user: any) {
+    const updatedUser = { ...user };
+    updatedUser.is_active = !updatedUser.is_active;
+    this.userapi.updateUser(updatedUser)
+      .subscribe(
+        (response) => {
+          this.refreshUsersTable();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+
   openDialog(): void {
-    const dialogRef = this.dialog.open(CreateUserComponent, {
+    const dialogConfig: MatDialogConfig = {
       width: '500px',
-    });
+      data : {
+        title: 'Créez un nouvel utilisateur'
+      },
+      panelClass: 'dialog'
+    };
+
+    const dialogRef = this.dialog.open(CreateUserComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
@@ -52,10 +74,16 @@ export class UsersListComponent implements AfterViewInit {
   }
 
   openEditDialog(row: User): void {
-    const dialogRef = this.dialog.open(CreateUserComponent, {
+    const dialogConfig: MatDialogConfig = {
       width: '500px',
-      data: row // Pass the row data to the dialog component
-    });
+      data:{
+        user: row,
+        title : 'Modifiez cet utilisateur'
+      },
+      panelClass: 'dialog' // Add a custom CSS class to the dialog
+    };
+
+    const dialogRef = this.dialog.open(CreateUserComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);

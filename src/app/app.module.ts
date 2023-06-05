@@ -28,6 +28,8 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { MatOptionModule } from '@angular/material/core';
     SideMenuComponent,
     AnnouncementsListComponent,
     CategoriesListComponent,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    CreateAnnouncementComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { MatOptionModule } from '@angular/material/core';
     MatSlideToggleModule,
     MatDialogModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatExpansionModule
 
 
   ],

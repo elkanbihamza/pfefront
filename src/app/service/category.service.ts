@@ -23,11 +23,11 @@ getCategoryByCode(categoryCode: string): Observable<Category> {
 }
 
 createCategory(category : Category): Observable<Category> {
-  return this.http.post<Category>(this.apiUrl, Category);
+  return this.http.post<Category>(this.apiUrl, category);
 }
 
 updateCategory(category : Category): Observable<Category> {
-  const url = `${this.apiUrl}/${category.code}`;
+  const url = `${this.apiUrl}/${category.id}`;
   return this.http.put<Category>(url, category);
 }
 

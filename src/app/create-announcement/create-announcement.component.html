@@ -1,0 +1,27 @@
+<form [formGroup]="announcementForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput type="text" id="id" formControlName="id" placeholder="ID">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" id="title" formControlName="title" placeholder="Title">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput rows="5" id="body" formControlName="body" placeholder="Body"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display:none" #fileInput>
+    <mat-form-field>
+      <input matInput type="text" [value]="selectedFileName" placeholder="Select an image" [readonly]="true" (click)="fileInput.click()">
+      <button matSuffix mat-icon-button (click)="fileInput.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="is_hidden">Hidden</mat-checkbox>
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
