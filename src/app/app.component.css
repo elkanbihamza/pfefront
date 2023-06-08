@@ -19,3 +19,43 @@
   .logo{
     margin-left: 2%;
   }
+
+
+
+
+
+  .sidebar {
+    width: 200px;
+    height: 100%;
+    background-color: #ffffff !important;
+    box-shadow: 3px ;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 60px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent !important;
+    margin-top: 40px !important;
+  }
+
+  li {
+    margin-bottom: 30px;
+    background-color: transparent !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: #92939A !important;
+    font-weight: bold;
+    background-color: transparent !important;
+  }
+
+  .content {
+    margin-left: 200px; /* Adjust this value to match the sidebar width */
+    padding: 20px;
+  }

@@ -2,6 +2,12 @@
   flex-grow: 1;
   overflow-y: auto;
 }
+.table-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 20px; /* Add margin to the sides of the table */
+}
 
 table {
   width: 100%;

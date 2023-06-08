@@ -1,1 +1,23 @@
-<p>announcements-list works!</p>
+<div class="announcements-container">
+  <div class="breadcrumb-container">
+    <a routerLink="" class="breadcrumb-link">Home</a>
+    <a class="breadcrumb-separator">/</a>
+    <a routerLink="" class="breadcrumb-link">Liste des annonces</a>
+    <div class="breadcrumb-button">
+      <button mat-raised-button class="mat-button">Créer une annonce</button>
+    </div>
+  </div>
+
+  <div class="announcement-card-container">
+    <div class="announcement-card" *ngFor="let announcement of announcementData">
+      <div class="card-image">
+        <img [src]="announcement.image" alt="Announcement Image">
+      </div>
+      <div class="card-content">
+        <h3>{{ announcement.title }}</h3>
+        <p>{{ announcement.body }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+

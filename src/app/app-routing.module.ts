@@ -8,10 +8,10 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 
 const routes: Routes = [
-  {path: '',redirectTo:'announcements', pathMatch:'full'},
-  {path: 'announcements', component: AnnouncementsListComponent},
-  {path: 'login', component: LoginPageComponent},
-  {path: 'users', component: UsersListComponent},
+  { path: '', redirectTo:'announcements', pathMatch:'full'},
+  { path: 'annonces', component: AnnouncementsListComponent},
+  { path: 'login', component: LoginPageComponent},
+  { path: 'users', component: UsersListComponent},
   { path: 'categories', component: CategoriesListComponent},
   { path : 'create-announcement', component: CreateAnnouncementComponent}
 ];

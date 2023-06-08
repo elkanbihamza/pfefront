@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AnnouncementApiService } from '../service/announcement.service';
+//import { AnnouncementApiService } from '../service/announcement.service';
 
 @Component({
   selector: 'app-create-announcement',
@@ -13,7 +13,7 @@ export class CreateAnnouncementComponent implements OnInit {
   selectedFileBase64: string | ArrayBuffer | null = null;
 
   constructor(
-    private api: AnnouncementApiService,
+    // private api: AnnouncementApiService,
     private formBuilder: FormBuilder,
   ) { }
 
@@ -45,16 +45,16 @@ export class CreateAnnouncementComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  onSubmit(): void {
-    console.log(this.announcementForm.value);
-    const announcementData = this.announcementForm.value;
-    this.api.createAnnouncement(announcementData).subscribe(
-      response => {
-        console.log('Registration successful:', response);
-      },
-      error => {
-        console.error('Registration failed:', error);
-      }
-    );
-  }
+  // onSubmit(): void {
+  //   console.log(this.announcementForm.value);
+  //   const announcementData = this.announcementForm.value;
+  //   this.api.createAnnouncement(announcementData).subscribe(
+  //     response => {
+  //       console.log('Registration successful:', response);
+  //     },
+  //     error => {
+  //       console.error('Registration failed:', error);
+  //     }
+  //   );
+  // }
 }

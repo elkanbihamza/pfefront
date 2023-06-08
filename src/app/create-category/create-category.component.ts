@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CategoryApiService } from '../service/category.service';
+import { Category } from '../models/category.model';
 
 @Component({
   selector: 'app-create-category',
@@ -11,6 +12,9 @@ import { CategoryApiService } from '../service/category.service';
 export class CreateCategoryComponent implements OnInit {
   categoryForm! : FormGroup;
   categoryData: any;
+  categories: Category[] = [];
+  flatCategories: Category[] = [];
+  selectedCategory: string[] = [];
 
   constructor(
     private api: CategoryApiService,
@@ -25,8 +29,10 @@ export class CreateCategoryComponent implements OnInit {
     this.categoryForm = this.formBuilder.group({
       id: [this.categoryData?.id || ''],
       code: [this.categoryData?.code || '', [Validators.required]],
-      title: [this.categoryData?.title || '', [Validators.required]]
+      title: [this.categoryData?.title || '', [Validators.required]],
+      parent : [this.categoryData?.parent || '', [Validators.required]]
     });
+    this.fetchCategories();
   }
 
   onSubmit(): void {
@@ -52,6 +58,27 @@ export class CreateCategoryComponent implements OnInit {
           console.error('Registration failed:', error);
         }
       );
+    }
+  }
+
+  fetchCategories() {
+    this.api.getCategories().subscribe(
+      categories => {
+        this.categories = categories;
+        this.flattenCategories(categories);
+      },
+      error => {
+        console.log('Error fetching categories:', error);
+      }
+    );
+  }
+
+  flattenCategories(categories: Category[]) {
+    for (const category of categories) {
+      this.flatCategories.push(category);
+      if (category.children.length > 0) {
+        this.flattenCategories(category.children);
+      }
     }
   }
 
