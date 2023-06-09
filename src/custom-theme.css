@@ -2,7 +2,7 @@
 :root {
   --custom-primary: #4177FC;
   --custom-secondary: #F0F4FF;
-  --custom-warn: red;
+  --custom-warn: #DB1414;
 }
 
 /* Create the theme object using your primary and accent colors */
@@ -18,8 +18,8 @@
 }
 
 .mat-warn-button{
-  background-color: var(--custom-warn);
-  color: white;
+  background-color: var(--custom-warn) !important;
+  color: white !important;
   border-radius: 40px !important;
 }
 

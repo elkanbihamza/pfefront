@@ -1,4 +1,4 @@
-@import 'C:\Users\hamza\Desktop\pfefront\src\custom-theme.css';
+@import 'src/custom-theme.css';
 
 button.mdc-button.mdc-button--raised.mat-mdc-raised-button._mat-animation-noopable.mat-unthemed.mat-mdc-button-base{
   background-color: var(--custom-primary) !important;

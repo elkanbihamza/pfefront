@@ -30,12 +30,12 @@ export class LoginPageComponent {
     this.auth.login(user).subscribe((response:any) => {
       debugger
       console.log('response', response);
-      localStorage.setItem('token', response.token);
-      this.route.navigateByUrl('/users');
+      localStorage.setItem('session_id', response.token);
+      this.route.navigateByUrl('/annonces');
     })
   }
 
   onLogin(){
-    this.route.navigateByUrl('/users');
+    this.route.navigateByUrl('/annonces');
   }
 }
