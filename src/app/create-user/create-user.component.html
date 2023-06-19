@@ -29,10 +29,10 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Appartient à la catégorie</mat-label>
-          <mat-select formControlName="belongs_to" multiple>
+          <mat-select formControlName="categorie" multiple>
             <ng-container *ngFor="let category of flatCategories">
-              <mat-option [value]="category.code">
-                {{ category.code }} - {{ category.title }}
+              <mat-option [value]="category.code_categorie">
+                {{ category.code_categorie }} - {{ category.titre_categorie }}
               </mat-option>
             </ng-container>
           </mat-select>
@@ -41,7 +41,7 @@
 
       <section class="example-section">
         <label class="example-margin">Statut:</label>
-        <mat-radio-group formControlName="is_responsible">
+        <mat-radio-group formControlName="is_responsable">
           <mat-radio-button class="example-margin" [value]="true">
             Responsable
           </mat-radio-button>
@@ -51,13 +51,13 @@
         </mat-radio-group>
       </section>
 
-      <div *ngIf="userForm.get('is_responsible')?.value">
+      <div *ngIf="userForm.get('is_responsable')?.value">
         <mat-form-field appearance="outline">
           <mat-label>Responsable de la catégorie</mat-label>
-          <mat-select formControlName="is_responsible_of" multiple>
+          <mat-select formControlName="resp_cat" multiple>
             <ng-container *ngFor="let category of flatCategories">
-              <mat-option [value]="category.code">
-                {{ category.code }} - {{ category.title }}
+              <mat-option [value]="category.code_categorie">
+                {{ category.code_categorie }} - {{ category.titre_categorie }}
               </mat-option>
             </ng-container>
           </mat-select>

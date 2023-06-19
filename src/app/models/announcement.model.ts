@@ -1,7 +1,8 @@
 export class Announcement {
-  id!: number;
-  title!: string;
-  body!: string;
+  id_notif!: number;
+  titre_notif!: string;
+  texte!: string;
+  cree_par!: string;
   image!: string;
   is_hidden!: boolean;
 }

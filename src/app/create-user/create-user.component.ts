@@ -35,10 +35,10 @@ export class CreateUserComponent implements OnInit {
       fname: [this.userData?.fname || '', Validators.required],
       lname: [this.userData?.lname || '', Validators.required],
       email: [this.userData?.email || '', [Validators.required, Validators.email]],
-      belongs_to: [this.userData?.belongs_to || '', Validators.required],
-      is_responsible_of: [this.userData?.is_responsible_of || '', Validators.required],
-      is_responsible: [this.userData?.is_responsible || false, Validators.required],
-      is_active: [this.userData?.is_active || true],
+      categorie: [this.userData?.categorie || '', Validators.required],
+      resp_cat: [this.userData?.resp_cat || '', Validators.required],
+      is_responsable: [this.userData?.is_responsable || false, Validators.required],
+      activate: [this.userData?.activate || true],
     });
     this.fetchCategories();
     this.title = this.data.title;
@@ -85,8 +85,8 @@ export class CreateUserComponent implements OnInit {
   flattenCategories(categories: Category[]) {
     for (const category of categories) {
       this.flatCategories.push(category);
-      if (category.children.length > 0) {
-        this.flattenCategories(category.children);
+      if (category.subcategories.length > 0) {
+        this.flattenCategories(category.subcategories);
       }
     }
   }

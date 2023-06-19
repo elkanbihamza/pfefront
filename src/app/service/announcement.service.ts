@@ -7,7 +7,7 @@ import { Announcement } from '../models/announcement.model';
   providedIn: 'root'
 })
 export class AnnouncementService {
-  private apiUrl = 'http://localhost:3000/announcements';
+  private apiUrl = 'notyfsac/getallannounces';
 
   constructor(private http: HttpClient) {}
 

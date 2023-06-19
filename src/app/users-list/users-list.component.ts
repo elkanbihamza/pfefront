@@ -13,7 +13,7 @@ import { CreateUserComponent } from '../create-user/create-user.component';
   styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'categories', 'is_responsible', 'actions'];
+  displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'categorie', 'is_responsable', 'actions'];
   dataSource: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

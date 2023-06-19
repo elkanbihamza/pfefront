@@ -13,29 +13,30 @@ export class LoginPageComponent {
   loginForm! : FormGroup;
   hide =true;
 
-  constructor(private api : UserApiService, private auth : AuthService,
+  constructor( private auth : AuthService,
     private formBuilder: FormBuilder, private route : Router
   ) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required]]
     });
   }
 
   onSubmit(){
-    console.log(this.loginForm.value);
     const user = this.loginForm.value;
+    console.log(user);
     this.auth.login(user).subscribe((response:any) => {
-      debugger
       console.log('response', response);
-      localStorage.setItem('session_id', response.token);
-      this.route.navigateByUrl('/annonces');
+      localStorage.setItem('session :', response.session);
+      console.log('response stored successfully');
     })
   }
 
+
+
   onLogin(){
-    this.route.navigateByUrl('/annonces');
+   this.route.navigateByUrl('/annonces');
   }
 }

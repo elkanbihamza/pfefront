@@ -39,18 +39,18 @@
           <td mat-cell *matCellDef="let row">{{row.email}}</td>
         </ng-container>
 
-        <ng-container matColumnDef="categories">
+        <ng-container matColumnDef="categorie">
           <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 30%;"> Catégorie </th>
           <td mat-cell *matCellDef="let row">
-            <span *ngFor="let category of row.categories" class="category">{{category}}</span>
+            <span *ngFor="let categorie of row.categorie" class="category">{{categorie}}</span>
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="is_responsible">
+        <ng-container matColumnDef="is_responsable">
           <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;"> Responsable? </th>
           <td mat-cell *matCellDef="let row">
-            <mat-icon class="mat-icon-true" *ngIf="row.is_responsible">check</mat-icon>
-            <mat-icon class="mat-icon-false" *ngIf="!row.is_responsible">clear</mat-icon>
+            <mat-icon class="mat-icon-true" *ngIf="row.is_responsable">check</mat-icon>
+            <mat-icon class="mat-icon-false" *ngIf="!row.is_responsable">clear</mat-icon>
           </td>
         </ng-container>
 
@@ -61,7 +61,7 @@
               <button mat-icon-button (click)="openEditDialog(row)">
                 <mat-icon class="button-icon edit-icon">edit</mat-icon>
               </button>
-              <mat-slide-toggle [checked]="row.is_active" (change)="toggleUserActive(row)"></mat-slide-toggle>
+              <mat-slide-toggle [checked]="row.activate" (change)="toggleUserActive(row)"></mat-slide-toggle>
             </div>
           </td>
         </ng-container>

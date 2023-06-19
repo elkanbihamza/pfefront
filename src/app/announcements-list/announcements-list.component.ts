@@ -19,6 +19,7 @@ export class AnnouncementsListComponent implements OnInit {
   fetchAnnouncements() {
     this.apiService.getAnnouncements().subscribe(
       (announcements: Announcement[]) => {
+        console.log(announcements)
         this.announcementData = announcements;
       },
       (error: any) => {

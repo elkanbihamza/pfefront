@@ -13,7 +13,7 @@ import { CreateCategoryComponent } from '../create-category/create-category.comp
   styleUrls: ['./categories-list.component.css']
 })
 export class CategoriesListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['code', 'title', 'actions'];
+  displayedColumns: string[] = ['code_categorie', 'titre_categorie', 'actions'];
   dataSource: MatTableDataSource<Category>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -1,11 +1,9 @@
 export class User {
-    fName!: string;
-    lName!: string;
+    fname!: string;
+    lname!: string;
     email!: string;
     password!: string;
-    is_responsible!: boolean;
-    associate_to!: string;
-    responsible_of!: string;
+    is_responsable!: boolean;
     id!: number;
   }
   

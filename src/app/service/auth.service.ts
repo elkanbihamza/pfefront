@@ -10,6 +10,6 @@ export class AuthService {
     }
 
     login(obj: any ) {
-        return this.http.post('http://localhost:8080/notyfsac/login', obj);
+      return this.http.post('/notyfsac/getconnection', obj);
     }
 }

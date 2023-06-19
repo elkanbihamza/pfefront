@@ -27,10 +27,9 @@ export class CreateCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
-      id: [this.categoryData?.id || ''],
-      code: [this.categoryData?.code || '', [Validators.required]],
-      title: [this.categoryData?.title || '', [Validators.required]],
-      parent : [this.categoryData?.parent || '', [Validators.required]]
+      code_categorie: [this.categoryData?.code_categorie || '', [Validators.required]],
+      titre_categorie: [this.categoryData?.titre_categorie || '', [Validators.required]],
+      code_categorie_1: [this.categoryData?.code_categorie_1 || '', [Validators.required]]
     });
     this.fetchCategories();
   }
@@ -76,8 +75,8 @@ export class CreateCategoryComponent implements OnInit {
   flattenCategories(categories: Category[]) {
     for (const category of categories) {
       this.flatCategories.push(category);
-      if (category.children.length > 0) {
-        this.flattenCategories(category.children);
+      if (category.subcategories.length > 0) {
+        this.flattenCategories(category.subcategories);
       }
     }
   }
