@@ -28,6 +28,7 @@ table {
   margin: 2px;
   background-color: #CDE7FF;
   border-radius: 10px;
+  font-weight:  500 !important;
 }
 
 td,

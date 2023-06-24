@@ -1,6 +1,7 @@
 export class Category{
-  code_categorie!: string;
-  titre_categorie!: string;
-  level!: number;
+  id!: number;
+  code!: string;
+  title!: string;
   subcategories!: Category[];
+  expanded!: boolean;
 }

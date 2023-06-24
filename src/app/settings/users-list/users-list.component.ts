@@ -2,8 +2,8 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { UserApiService } from '../service/user.service';
-import { User } from '../models/user.model';
+import { UserApiService } from '../../service/user.service';
+import { User } from '../../models/user.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
 
@@ -13,7 +13,7 @@ import { CreateUserComponent } from '../create-user/create-user.component';
   styleUrls: ['./users-list.component.css'],
 })
 export class UsersListComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'categorie', 'is_responsable', 'actions'];
+  displayedColumns: string[] = ['fname', 'lname', 'email', 'belongs_to', 'is_responsible_of', 'is_responsible', 'actions'];
   dataSource: MatTableDataSource<User>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

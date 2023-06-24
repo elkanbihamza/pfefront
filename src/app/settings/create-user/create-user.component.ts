@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserApiService } from '../service/user.service';
+import { UserApiService } from '../../service/user.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Category } from '../models/category.model';
-import { CategoryApiService } from '../service/category.service';
+import { Category } from '../../models/category.model';
+import { CategoryApiService } from '../../service/category.service';
 
 @Component({
   selector: 'app-create-user',
@@ -35,13 +35,20 @@ export class CreateUserComponent implements OnInit {
       fname: [this.userData?.fname || '', Validators.required],
       lname: [this.userData?.lname || '', Validators.required],
       email: [this.userData?.email || '', [Validators.required, Validators.email]],
-      categorie: [this.userData?.categorie || '', Validators.required],
-      resp_cat: [this.userData?.resp_cat || '', Validators.required],
-      is_responsable: [this.userData?.is_responsable || false, Validators.required],
-      activate: [this.userData?.activate || true],
+      belongs_to: [this.userData?.belongs_to || '', Validators.required],
+      is_responsible_of: [this.userData?.is_responsible_of || '', Validators.required],
+      is_responsible: [this.userData?.is_responsible || false, Validators.required],
+      is_admin: [this.userData?.is_admin || false],
+      is_active: [this.userData?.is_active || true],
     });
     this.fetchCategories();
     this.title = this.data.title;
+
+    this.userForm.get('is_responsible')?.valueChanges.subscribe((value) => {
+      if (!value) {
+        this.userForm.get('is_responsible_of')?.setValue([]);
+      }
+    });
   }
 
   onSubmit(): void {

@@ -1,0 +1,16 @@
+<div id="appContainer">
+  <div id="sideMenu">
+    <ul class="menuList">
+      <li>
+        <button mat-button routerLink="/settings/users" routerLinkActive="active"><mat-icon fontIcon="manage_accounts"></mat-icon>Gestion des utilisateurs</button>
+      </li>
+      <li>
+        <button mat-button routerLink="/settings/categories" routerLinkActive="active"><mat-icon fontIcon="category"></mat-icon>Gestion des catégories</button>
+      </li>
+    </ul>
+  </div>
+
+  <div id="routerOutletContainer">
+    <router-outlet></router-outlet>
+  </div>
+</div>

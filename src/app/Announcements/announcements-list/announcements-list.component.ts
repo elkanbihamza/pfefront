@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AnnouncementService } from '../service/announcement.service';
-import { Announcement } from '../models/announcement.model';
+import { AnnouncementService } from '../../service/announcement.service';
+import { Announcement } from '../../models/announcement.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-announcements-list',
@@ -10,7 +11,7 @@ import { Announcement } from '../models/announcement.model';
 export class AnnouncementsListComponent implements OnInit {
   public announcementData: Announcement[] = [];
 
-  constructor(private apiService: AnnouncementService) {}
+  constructor(private apiService: AnnouncementService, private route : Router) {}
 
   ngOnInit() {
     this.fetchAnnouncements();
@@ -26,6 +27,10 @@ export class AnnouncementsListComponent implements OnInit {
         console.error('Error fetching announcements:', error);
       }
     );
+  }
+
+  openAnnouncement(announcementId: number) {
+    this.route.navigate(['/announcement', announcementId]);
   }
 
 }

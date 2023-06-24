@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding-top: 20px !important;
   margin: 0 20px !important;
 }
 
@@ -11,6 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  padding: 10px !important;
 }
 
 .announcement-card {
@@ -35,8 +37,8 @@
 }
 
 .card-content {
-  margin-left: 15px !important;
-  margin-top: 20px !important;
+  width: 100% !important;
+  margin: 10px !important;
 }
 
 .card-content h3 {
@@ -52,3 +54,30 @@
 }
 
 
+.announcement-infos {
+  display: flex; /* Added */
+  flex-wrap: wrap; /* Added */
+  margin-bottom: 10px;
+}
+
+.announcement-infos p {
+  margin-right: 10px; /* Added spacing between elements */
+}
+
+
+
+.info-element {
+  display: flex;
+  align-items: center;
+}
+
+.centered-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.announcement-info {
+  margin-left: 5px;
+}

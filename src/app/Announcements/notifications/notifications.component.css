@@ -1,0 +1,66 @@
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  width: 100%; /* Ensure each item spans the full width */
+}
+
+.notification-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: black !important;
+}
+
+.notification-body {
+  margin-bottom: 10px;
+  color: black !important;
+}
+
+.notification-meta {
+  color: #888;
+  font-size: 12px;
+}
+
+.notification-date {
+  margin-right: 10px;
+}
+
+.notification-user {
+  font-style: italic;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 50px;
+  z-index: 100;
+  background-color: #F0F4FF;
+  border: 1px solid #ccc;
+  max-height: none; /* Remove the max-height property */
+  overflow: hidden; /* Hide the scrollbars */
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.notification-button {
+  background-color: transparent;
+  border: none;
+  color: white !important;
+}
+.badge{
+  font-size: 16px !important;
+}
+
+
+/* Rest of your existing styles for notification elements */

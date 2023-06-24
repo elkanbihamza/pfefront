@@ -1,0 +1,19 @@
+<button mat-icon-button (click)="toggleDropdown()">
+    <mat-icon>notifications</mat-icon>
+    <span class="badge">{{ notifications.length }}</span>
+</button>
+
+<div class="dropdown" *ngIf="isDropdownOpen && notifications.length">
+  <ul>
+    <li *ngFor="let notification of notifications">
+      <div class="notification-item">
+        <h2 class="notification-title">{{ notification.title }}</h2>
+        <div class="notification-meta">
+          <span class="notification-date">{{ notification.date | date }}</span>
+          <span class="notification-user">{{ notification.created_by }}</span>
+        </div>
+        <!-- <p class="notification-body">{{ notification.body | slice:0:50 }}{{ notification.body.length > 50 ? '...' : '' }}</p> -->
+      </div>
+    </li>
+  </ul>
+</div>

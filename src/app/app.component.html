@@ -1,29 +1,56 @@
-<div class="sticky-header">
-  <mat-toolbar color="primary">
-    <img width="120px" src="assets\output-onlinepngtools.png" alt="Logo FSAC" class="logo">
-    <span class="example-spacer"></span>
-    <button mat-icon-button>
-      <mat-icon>notifications</mat-icon>
-    </button>
-    <button mat-icon-button>
-      <mat-icon>settings</mat-icon>
-    </button>
-    <button mat-icon-button routerLink="/login">
-      <mat-icon>logout</mat-icon>
-    </button>
+<div class="app-container">
+  <div class="background-svg">
+    <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_225_1108)">
+      <rect width="1920" height="1080" fill="white"/>
+      <g filter="url(#filter0_f_225_1108)">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M42.6296 259C150.543 259 223.478 360.017 223.478 467.93C223.478 581.997 156.697 697.296 42.6296 697.296C-82.4717 697.296 -181 593.031 -181 467.93C-181 348.413 -76.8874 259 42.6296 259Z" fill="url(#paint0_linear_225_1108)" fill-opacity="0.5"/>
+      </g>
+      <g filter="url(#filter1_f_225_1108)">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M1803.63 697C1911.54 697 1984.48 798.017 1984.48 905.93C1984.48 1020 1917.7 1135.3 1803.63 1135.3C1678.53 1135.3 1580 1031.03 1580 905.93C1580 786.413 1684.11 697 1803.63 697Z" fill="url(#paint1_linear_225_1108)" fill-opacity="0.5"/>
+      </g>
+      </g>
+      <defs>
+      <filter id="filter0_f_225_1108" x="-481" y="-41" width="1004.48" height="1038.3" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_225_1108"/>
+      </filter>
+      <filter id="filter1_f_225_1108" x="1280" y="397" width="1004.48" height="1038.3" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur_225_1108"/>
+      </filter>
+      <linearGradient id="paint0_linear_225_1108" x1="21.2391" y1="259" x2="21.2391" y2="697.296" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4177FC"/>
+      <stop offset="1" stop-color="#F0F4FF"/>
+      </linearGradient>
+      <linearGradient id="paint1_linear_225_1108" x1="1782.24" y1="697" x2="1782.24" y2="1135.3" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4177FC"/>
+      <stop offset="1" stop-color="#F0F4FF"/>
+      </linearGradient>
+      <clipPath id="clip0_225_1108">
+      <rect width="1920" height="1080" fill="white"/>
+      </clipPath>
+      </defs>
+      </svg>
+  </div>
 
-    <!-- <button mat-raised-button routerLink="users">
-      Liste des étudiants
-    </button> -->
-  </mat-toolbar>
+  <div class="sticky-header">
+    <mat-toolbar color="primary">
+      <img width="120px" src="assets\output-onlinepngtools.png" alt="Logo FSAC" class="logo" routerLink="">
+      <span class="example-spacer"></span>
+      <app-notifications></app-notifications>
+      <button mat-icon-button routerLink="/settings">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button routerLink="/login">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+
+  <div id="routerOutletContainer">
+    <router-outlet ></router-outlet>
+  </div>
 </div>
-<!-- <div class="sidebar">
-  <ul>
-    <li><a>Dashboard</a></li>
-    <li><a>E-Learning</a></li>
-    <li><a>Emploi du temps</a></li>
-    <li><a routerLink="/annonces">Annonces</a></li>
-  </ul>
-</div> -->
-
-<router-outlet></router-outlet>

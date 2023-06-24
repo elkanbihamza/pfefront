@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CategoryApiService } from '../service/category.service';
-import { Category } from '../models/category.model';
+import { CategoryApiService } from '../../service/category.service';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-create-category',
@@ -27,9 +27,10 @@ export class CreateCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
-      code_categorie: [this.categoryData?.code_categorie || '', [Validators.required]],
-      titre_categorie: [this.categoryData?.titre_categorie || '', [Validators.required]],
-      code_categorie_1: [this.categoryData?.code_categorie_1 || '', [Validators.required]]
+      id: [this.categoryData?.id || ''],
+      code: [this.categoryData?.code || '', [Validators.required]],
+      title: [this.categoryData?.title || '', [Validators.required]],
+      subcategories: [this.categoryData?.subcategories || []]
     });
     this.fetchCategories();
   }

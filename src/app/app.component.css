@@ -6,7 +6,6 @@
   }
 
   mat-toolbar{
-    margin-bottom: 20px;
     background-color: var(--custom-primary) !important;
     z-index: 100;
   }
@@ -21,41 +20,20 @@
   }
 
 
-
-
-
-  .sidebar {
-    width: 200px;
-    height: 100%;
-    background-color: #ffffff !important;
-    box-shadow: 3px ;
-    padding: 20px;
+  .background-svg {
     position: fixed;
+    top: 0;
     left: 0;
-    top: 60px;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    background-color: transparent !important;
-    margin-top: 40px !important;
-  }
 
-  li {
-    margin-bottom: 30px;
-    background-color: transparent !important;
-  }
 
-  a {
-    text-decoration: none;
-    color: #92939A !important;
-    font-weight: bold;
-    background-color: transparent !important;
-  }
 
-  .content {
-    margin-left: 200px; /* Adjust this value to match the sidebar width */
-    padding: 20px;
-  }
+
+
+
+

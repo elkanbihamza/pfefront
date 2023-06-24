@@ -1,0 +1,39 @@
+<div class="form-container">
+  <div class="breadcrumb-container">
+    <a routerLink="" class="breadcrumb-link">Home</a>
+    <a class="breadcrumb-separator">/</a>
+    <a routerLink="/annonces" class="breadcrumb-link">Liste des annonces</a>
+    <a class="breadcrumb-separator">/</a>
+    <a class="breadcrumb-link">Nouvelle annonce</a>
+    <div class="breadcrumb-button">
+    </div>
+  </div>
+
+  <hr>
+
+  <form [formGroup]="announcementForm">
+    <mat-form-field appearance="outline">
+      <input matInput type="text" id="title" formControlName="title" placeholder="Titre de l'annonce">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <textarea matInput rows="5" id="body" formControlName="body" placeholder="Body"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" #fileInput>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" [value]="selectedFileName" placeholder="Select an image" [readonly]="true" (click)="fileInput.click()">
+        <button matSuffix mat-icon-button (click)="fileInput.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-form-field>
+
+    <button mat-raised-button class="mat-button">Publier l'annonce</button>
+    <button mat-raised-button class="mat-button">Planifier l'annonce</button>
+    <button mat-raised-button class="mat-warn-button" routerLink="/annonces">Annuler</button>
+  </form>
+
+</div>
+

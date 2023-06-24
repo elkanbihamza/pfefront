@@ -1,0 +1,65 @@
+<div class="big-container">
+  <div class="breadcrumb-container">
+    <a routerLink="" class="breadcrumb-link">Home</a>
+    <a class="breadcrumb-separator">/</a>
+    <a routerLink="/annonces" class="breadcrumb-link">Liste des annonces</a>
+    <a class="breadcrumb-separator">/</a>
+    <a class="breadcrumb-link">{{ announcement.title }}</a>
+    <div class="breadcrumb-button">
+      <button mat-mini-fab class="mat-button" aria-label="Example icon button with a menu icon">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+  <hr>
+
+  <!-- <div *ngIf="announcement">
+    <img [src]="announcement.image" alt="Announcement Image" />
+    <h1>{{ announcement.title }}</h1>
+    <p>Créée par : {{ announcement.created_by }}</p>
+    <p>Créée le : {{ announcement.date }}</p>
+    <p>Catégorie : <span *ngFor="let category of announcement.categories" class="announcement-category">  {{ category }},</span></p>
+    <p>{{ announcement.body }}</p>
+
+  </div> -->
+
+
+  <div *ngIf="announcement" class="announcement-container">
+    <div class="announcement-image">
+      <img [src]="announcement.image" alt="Announcement Image" />
+    </div>
+    <div class="infos-container">
+      <div class="announcement-title">
+        <h1>{{ announcement.title }}</h1>
+      </div>
+      <div class="announcement-infos">
+        <p class="info-element">
+          <span class="centered-content">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="manage_accounts"></mat-icon>
+            <span class="announcement-info">{{ announcement.created_by }}</span>
+          </span>
+        </p>
+        <p class="info-element">
+          <span class="centered-content">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="today"></mat-icon>
+            <span class="announcement-info">{{ announcement.date }}</span>
+          </span>
+        </p>
+        <p class="info-element">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="groups"></mat-icon>
+          <span class="announcement-info">
+            <span *ngFor="let category of announcement.categories" class="announcement-category">{{ category }},</span>
+          </span>
+        </p>
+        <div class="announcement-body">
+          <p>{{ announcement.body }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+

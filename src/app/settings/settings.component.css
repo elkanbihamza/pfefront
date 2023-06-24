@@ -1,0 +1,31 @@
+#appContainer {
+  display: flex;
+  height: 100vh;
+}
+
+#sideMenu {
+  background-color: #F0F4FF;
+  left: 0 !important;
+}
+
+.menuList {
+  list-style-type: none;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.menuList li {
+  margin-bottom: 20px;
+}
+
+#routerOutletContainer {
+  flex-grow: 1;
+  padding-top: 20px;
+}
+button {
+  color: var(--custom-primary) !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
