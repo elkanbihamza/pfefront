@@ -5,3 +5,27 @@
   padding-top: 20px !important;
   margin: 0 20px !important;
 }
+
+.flex-container{
+  display: flex;
+}
+
+.file-input{
+  margin: 0 20px !important;
+}
+
+.file-input mat-form-field{
+  height: 100% !important;
+}
+
+.form-buttons{
+  position: absolute !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin-bottom: 20px !important;
+  margin-right: 20px !important;
+}
+
+.form-buttons button {
+  margin-left: 10px !important;
+}

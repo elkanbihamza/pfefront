@@ -30,7 +30,7 @@ export class AnnouncementsListComponent implements OnInit {
   }
 
   openAnnouncement(announcementId: number) {
-    this.route.navigate(['/announcement', announcementId]);
+    this.route.navigate(['/annonces', announcementId]);
   }
 
 }

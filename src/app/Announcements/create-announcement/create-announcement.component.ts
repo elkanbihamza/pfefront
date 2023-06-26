@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Category } from 'src/app/models/category.model';
+import { AnnouncementService } from 'src/app/service/announcement.service';
+import { CategoryApiService } from 'src/app/service/category.service';
 //import { AnnouncementApiService } from '../service/announcement.service';
 
 @Component({
@@ -9,12 +13,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateAnnouncementComponent implements OnInit {
   announcementForm!: FormGroup;
+  selectedFile: any;
   selectedFileName: string | undefined;
   selectedFileBase64: string | ArrayBuffer | null = null;
+  categories: Category[] = [];
+  flatCategories: Category[] = [];
+  selectedCategory: string[] = [];
 
   constructor(
     // private api: AnnouncementApiService,
     private formBuilder: FormBuilder,
+    private catapi: CategoryApiService,
+    private api : AnnouncementService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -23,8 +34,32 @@ export class CreateAnnouncementComponent implements OnInit {
       title: ['', [Validators.required]],
       body: ['', [Validators.required]],
       imageInput: ['', [Validators.required]],
+      categories: [],
       is_hidden: [false]
     });
+
+    this.fetchCategories();
+  }
+
+  fetchCategories() {
+    this.catapi.getCategories().subscribe(
+      categories => {
+        this.categories = categories;
+        this.flattenCategories(categories);
+      },
+      error => {
+        console.log('Error fetching categories:', error);
+      }
+    );
+  }
+
+  flattenCategories(categories: Category[]) {
+    for (const category of categories) {
+      this.flatCategories.push(category);
+      if (category.subcategories.length > 0) {
+        this.flattenCategories(category.subcategories);
+      }
+    }
   }
 
   onFileSelected(event: any): void {
@@ -45,16 +80,18 @@ export class CreateAnnouncementComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  // onSubmit(): void {
-  //   console.log(this.announcementForm.value);
-  //   const announcementData = this.announcementForm.value;
-  //   this.api.createAnnouncement(announcementData).subscribe(
-  //     response => {
-  //       console.log('Registration successful:', response);
-  //     },
-  //     error => {
-  //       console.error('Registration failed:', error);
-  //     }
-  //   );
-  // }
+  onSubmit(): void {
+    console.log(this.announcementForm.value);
+    const announcementData = this.announcementForm.value;
+    this.api.createAnnouncement(announcementData).subscribe(
+      response => {
+        console.log('Registration successful:', response);
+      },
+      error => {
+        console.error('Registration failed:', error);
+      }
+    );
+    this.router.navigate(['/annonces']);
+  }
+
 }

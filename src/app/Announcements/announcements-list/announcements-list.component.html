@@ -32,11 +32,11 @@
           <p class="info-element">
             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="groups"></mat-icon>
             <span class="announcement-info">
-              <span *ngFor="let category of announcement.categories" class="announcement-category">{{ category }},</span>
+              <span *ngFor="let category of announcement.categories" class="announcement-category">{{ category }} </span>
             </span>
           </p>
         </div>
-        <p>{{ announcement.body | slice:0:200 }}{{ announcement.body.length > 100 ? '...' : '' }}</p>
+        <p>{{ announcement.body | slice:0:200 }}{{ announcement.body.length > 200 ? '...' : '' }}</p>
       </div>
     </div>
   </div>

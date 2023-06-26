@@ -12,27 +12,55 @@
   <hr>
 
   <form [formGroup]="announcementForm">
-    <mat-form-field appearance="outline">
-      <input matInput type="text" id="title" formControlName="title" placeholder="Titre de l'annonce">
-    </mat-form-field>
+    <div class="flex-container">
+      <div class="file-input" style="flex-grow: 3">
+        <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline">
+            <input matInput type="text" [value]="selectedFileName" placeholder="Select an image" [readonly]="true" (click)="fileInput.click()">
+            <button matSuffix mat-icon-button (click)="fileInput.click()">
+              <mat-icon>cloud_upload</mat-icon>
+            </button>
+          </mat-form-field>
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" #fileInput style="display:none">
+        </mat-form-field>
+      </div>
 
-    <mat-form-field appearance="outline">
-      <textarea matInput rows="5" id="body" formControlName="body" placeholder="Body"></textarea>
-    </mat-form-field>
+      <div style="flex-grow: 6">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label> Titre de l'annonce</mat-label>
+            <input matInput type="text" id="title" formControlName="title">
+          </mat-form-field>
+        </div>
 
-    <mat-form-field appearance="outline">
-      <input type="file" (change)="onFileSelected($event)" accept="image/*" #fileInput>
-      <mat-form-field appearance="outline">
-        <input matInput type="text" [value]="selectedFileName" placeholder="Select an image" [readonly]="true" (click)="fileInput.click()">
-        <button matSuffix mat-icon-button (click)="fileInput.click()">
-          <mat-icon>attach_file</mat-icon>
-        </button>
-      </mat-form-field>
-    </mat-form-field>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Catégories cibles</mat-label>
+            <mat-select formControlName="categories" multiple>
+              <ng-container *ngFor="let category of flatCategories">
+                <mat-option [value]="category.code">
+                  {{ category.code }} - {{ category.title }}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-    <button mat-raised-button class="mat-button">Publier l'annonce</button>
-    <button mat-raised-button class="mat-button">Planifier l'annonce</button>
-    <button mat-raised-button class="mat-warn-button" routerLink="/annonces">Annuler</button>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Contenu de l'annonce</mat-label>
+            <textarea matInput rows="10" id="body" formControlName="body"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-buttons">
+      <button mat-raised-button class="mat-button" (click)="onSubmit()">Publier l'annonce</button>
+      <button mat-raised-button class="mat-button">Planifier l'annonce</button>
+      <button mat-raised-button class="mat-warn-button" routerLink="/annonces">Annuler</button>
+    </div>
+
   </form>
 
 </div>

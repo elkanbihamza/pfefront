@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'categories', component: CategoriesListComponent },
     ]
   },
-  { path: 'announcement/:id', component: AnnouncementViewComponent }
+  { path: 'annonces/:id', component: AnnouncementViewComponent }
 ];
 
 @NgModule({

@@ -19,4 +19,8 @@ export class AnnouncementService {
     const url = `http://localhost:3000/announcements/${Id}`;
     return this.http.get<Announcement>(url);
   }
+
+  createAnnouncement(announcement: Announcement): Observable<Announcement> {
+    return this.http.post<Announcement>('http://localhost:3000/announcements', announcement);
+  }
 }

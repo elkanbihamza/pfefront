@@ -24,6 +24,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SettingsComponent } from './settings.component';
+import { ScheduleDialogComponent } from './schedule-dialog/schedule-dialog.component';
 
 
 
@@ -33,7 +34,8 @@ import { SettingsComponent } from './settings.component';
     CreateCategoryComponent,
     CreateUserComponent,
     UsersListComponent,
-    SettingsComponent
+    SettingsComponent,
+    ScheduleDialogComponent
   ],
   imports: [
     CommonModule,
