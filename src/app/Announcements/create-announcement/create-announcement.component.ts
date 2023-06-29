@@ -19,6 +19,7 @@ export class CreateAnnouncementComponent implements OnInit {
   categories: Category[] = [];
   flatCategories: Category[] = [];
   selectedCategory: string[] = [];
+  
 
   constructor(
     // private api: AnnouncementApiService,
@@ -30,12 +31,10 @@ export class CreateAnnouncementComponent implements OnInit {
 
   ngOnInit(): void {
     this.announcementForm = this.formBuilder.group({
-      id: [''],
       title: ['', [Validators.required]],
       body: ['', [Validators.required]],
-      imageInput: ['', [Validators.required]],
-      categories: [],
-      is_hidden: [false]
+      image: ['', [Validators.required]],
+      category: []
     });
 
     this.fetchCategories();
@@ -66,7 +65,7 @@ export class CreateAnnouncementComponent implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       this.selectedFileName = file.name;
-      this.announcementForm.get('imageInput')?.setValue(file);
+      this.announcementForm.get('image')?.setValue(file);
       this.convertToBase64(file);
     }
   }
@@ -75,7 +74,7 @@ export class CreateAnnouncementComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.selectedFileBase64 = e.target.result;
-      this.announcementForm.get('imageInput')?.setValue(this.selectedFileBase64);
+      this.announcementForm.get('image')?.setValue(this.selectedFileBase64);
     };
     reader.readAsDataURL(file);
   }
@@ -92,6 +91,33 @@ export class CreateAnnouncementComponent implements OnInit {
       }
     );
     this.router.navigate(['/annonces']);
+  }
+
+  onFileSelect(event : any){
+    const file = event.target.files[0];
+    this.announcementForm.get('image')?.setValue(file);
+  }
+
+  submit() {
+    const formData = new FormData();
+    formData.append('title', this.announcementForm.get('title')?.value);
+    formData.append('category', JSON.stringify(this.announcementForm.get('category')?.value));
+    formData.append('body', this.announcementForm.get('body')?.value);
+    formData.append('file', this.announcementForm.get('image')?.value);
+
+    formData.forEach((value, key) => {
+      console.log(key, value);
+    })
+
+    this.api.createAnnouncement(formData).subscribe(
+      response => {
+        console.log('Success:', response);
+        this.router.navigate(['/annonces']);
+      },
+      error => {
+        console.error('Error:', error);
+      }
+    );
   }
 
 }

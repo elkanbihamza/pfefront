@@ -10,6 +10,7 @@ import { AnnouncementService } from 'src/app/service/announcement.service';
 })
 export class AnnouncementViewComponent implements OnInit {
   announcement!: Announcement;
+  
 
   constructor(
     private route: ActivatedRoute,

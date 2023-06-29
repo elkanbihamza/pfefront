@@ -12,25 +12,25 @@ export class CategoryApiService {
 constructor(private http: HttpClient) { }
 
 getCategories(): Observable<Category[]> {
-  return this.http.get<Category[]>('http://localhost:3000/categories');
+  return this.http.get<Category[]>('/fsacnotif/getallcategories');
 }
 
 getCategoryByCode(categoryCode: string): Observable<Category> {
-  const url = `http://localhost:3000/categories${categoryCode}`;
+  const url = `/fsacnotif/categories/${categoryCode}`;
   return this.http.get<Category>(url);
 }
 
 createCategory(category : Category): Observable<Category> {
-  return this.http.post<Category>('http://localhost:3000/categories', category);
+  return this.http.post<Category>('/fsacnotif/categories', category);
 }
 
 updateCategory(category : Category): Observable<Category> {
-  const url = `http://localhost:3000/categories/${category.code}`;
+  const url = `/fsacnotif/categories/${category.code}`;
   return this.http.put<Category>(url, category);
 }
 
 deleteCategory(categoryCode : string): Observable<any> {
-  const url = `http://localhost:3000/categories/${categoryCode}`;
+  const url = `/fsacnotif/categories/${categoryCode}`;
   return this.http.delete(url);
 }
 

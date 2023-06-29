@@ -3,7 +3,7 @@ export class Announcement {
   title!: string;
   body!: string;
   date! : Date;
-  categories!: [];
+  category!: [];
   created_by!: string;
   image!: string;
   is_hidden!: boolean;

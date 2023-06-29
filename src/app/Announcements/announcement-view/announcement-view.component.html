@@ -26,7 +26,7 @@
 
   <div *ngIf="announcement" class="announcement-container">
     <div class="announcement-image">
-      <img [src]="announcement.image" alt="Announcement Image" />
+      <img src="assets\{{announcement.image}}" alt="Announcement Image" />
     </div>
     <div class="infos-container">
       <div class="announcement-title">
@@ -48,7 +48,7 @@
         <p class="info-element">
           <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="groups"></mat-icon>
           <span class="announcement-info">
-            <span *ngFor="let category of announcement.categories" class="announcement-category">{{ category }},</span>
+            <span *ngFor="let category of announcement.category" class="announcement-category">{{ category }},</span>
           </span>
         </p>
         <div class="announcement-body">

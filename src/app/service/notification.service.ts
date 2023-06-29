@@ -6,11 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NotificationService {
-  private apiUrl = 'http://localhost:3000/notifications';
 
   constructor(private http: HttpClient) {}
 
   getNotifications(): Observable<Notification[]> {
-    return this.http.get<Notification[]>(this.apiUrl);
+    return this.http.get<Notification[]>('/fsacnotif/getallnotifications');
   }
 }

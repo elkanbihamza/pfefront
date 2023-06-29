@@ -9,7 +9,11 @@ export class AuthService {
     constructor(private http: HttpClient) {
     }
 
-    login(obj: any ) {
-      return this.http.post('/notyfsac/getconnection', obj);
+    login(user: User ) {
+      return this.http.post('/fsacnotif/getconnection', user);
+    }
+
+    logout(){
+      localStorage.removeItem('session');
     }
 }

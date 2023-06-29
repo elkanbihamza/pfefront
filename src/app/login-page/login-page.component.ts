@@ -1,5 +1,5 @@
 import { AuthService } from './../service/auth.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserApiService } from '../service/user.service';
 import {Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
   loginForm! : FormGroup;
   hide =true;
 
@@ -29,8 +29,9 @@ export class LoginPageComponent {
     console.log(user);
     this.auth.login(user).subscribe((response:any) => {
       console.log('response', response);
-      localStorage.setItem('session :', response.session);
+      localStorage.setItem('session', response.session);
       console.log('response stored successfully');
+      this.route.navigate(['/annonces']);
     })
   }
 

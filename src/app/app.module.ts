@@ -29,7 +29,8 @@ import { AnnouncementViewComponent } from './Announcements/announcement-view/ann
 import {MatTreeModule} from '@angular/material/tree';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-
+import { AuthGuardService } from './service/auth-guard.service';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 
@@ -41,6 +42,7 @@ import { MatInputModule } from '@angular/material/input';
     CreateAnnouncementComponent,
     NotificationsComponent,
     AnnouncementViewComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,8 @@ import { MatInputModule } from '@angular/material/input';
   ],
   providers: [
     UserApiService,
-    AuthService
+    AuthService, 
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

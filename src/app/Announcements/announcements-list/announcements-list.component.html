@@ -12,7 +12,7 @@
   <div class="announcement-card-container">
     <div class="announcement-card" *ngFor="let announcement of announcementData" (click)="openAnnouncement(announcement.id)">
       <div class="card-image">
-        <img [src]="announcement.image" alt="Announcement Image">
+        <img src="assets\{{announcement.image}}" alt="Announcement Image">
       </div>
       <div class="card-content">
         <h3>{{ announcement.title }}</h3>
@@ -32,11 +32,12 @@
           <p class="info-element">
             <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="groups"></mat-icon>
             <span class="announcement-info">
-              <span *ngFor="let category of announcement.categories" class="announcement-category">{{ category }} </span>
+              <span *ngFor="let category of announcement.category" class="announcement-category">{{ category }} </span>
             </span>
           </p>
         </div>
-        <p>{{ announcement.body | slice:0:200 }}{{ announcement.body.length > 200 ? '...' : '' }}</p>
+          <p>{{ announcement.body | slice:0:200 }}{{ announcement.body.length > 200 ? '...' : '' }}</p>
+        
       </div>
     </div>
   </div>

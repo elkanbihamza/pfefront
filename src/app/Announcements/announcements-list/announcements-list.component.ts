@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AnnouncementsListComponent implements OnInit {
   public announcementData: Announcement[] = [];
 
+
   constructor(private apiService: AnnouncementService, private route : Router) {}
 
   ngOnInit() {

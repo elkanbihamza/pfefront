@@ -12,15 +12,15 @@ export class AnnouncementService {
   constructor(private http: HttpClient) {}
 
   getAnnouncements(): Observable<Announcement[]> {
-    return this.http.get<Announcement[]>(this.apiUrl);
+    return this.http.get<Announcement[]>('/fsacnotif/getallannounces');
   }
 
   getAnnouncement(Id: number): Observable<Announcement> {
-    const url = `http://localhost:3000/announcements/${Id}`;
+    const url = `/fsacnotif/announces/${Id}`;
     return this.http.get<Announcement>(url);
   }
 
-  createAnnouncement(announcement: Announcement): Observable<Announcement> {
-    return this.http.post<Announcement>('http://localhost:3000/announcements', announcement);
+  createAnnouncement(announcement: any): Observable<Announcement> {
+    return this.http.post<Announcement>('/fsacnotif/traitementfile', announcement);
   }
 }

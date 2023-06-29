@@ -38,7 +38,6 @@ export class CreateUserComponent implements OnInit {
       belongs_to: [this.userData?.belongs_to || '', Validators.required],
       is_responsible_of: [this.userData?.is_responsible_of || '', Validators.required],
       is_responsible: [this.userData?.is_responsible || false, Validators.required],
-      is_admin: [this.userData?.is_admin || false],
       is_active: [this.userData?.is_active || true],
     });
     this.fetchCategories();
