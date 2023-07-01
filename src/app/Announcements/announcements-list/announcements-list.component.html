@@ -4,7 +4,7 @@
     <a class="breadcrumb-separator">/</a>
     <a routerLink="/annonces" class="breadcrumb-link">Liste des annonces</a>
     <div class="breadcrumb-button">
-      <button mat-raised-button class="mat-button" routerLink="/creerannonce"><mat-icon fontIcon="add"></mat-icon>Créer une annonce</button>
+      <button mat-raised-button class="mat-button" routerLink="/creerannonce" *ngIf="hasAnnouncementCreationAccess()" ><mat-icon fontIcon="add"></mat-icon>Créer une annonce</button>
     </div>
   </div>
   <hr>
@@ -20,7 +20,7 @@
           <p class="info-element">
             <span class="centered-content">
               <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="manage_accounts"></mat-icon>
-              <span class="announcement-info">{{ announcement.created_by }}</span>
+              <span class="announcement-info">{{ announcement.created_by}}</span>
             </span>
           </p>
           <p class="info-element">

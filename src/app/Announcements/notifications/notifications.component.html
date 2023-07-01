@@ -1,11 +1,11 @@
 <button mat-icon-button (click)="toggleDropdown()">
     <mat-icon>notifications</mat-icon>
-    <span class="badge">{{ notifications.length }}</span>
+    <span class="badge">{{ notificationCount }}</span>
 </button>
 
 <div class="dropdown" *ngIf="isDropdownOpen && notifications.length">
   <ul>
-    <li *ngFor="let notification of notifications">
+    <li *ngFor="let notification of notifications" (click)="openAnnouncement(notification.id)">
       <div class="notification-item">
         <h2 class="notification-title">{{ notification.title }}</h2>
         <div class="notification-meta">

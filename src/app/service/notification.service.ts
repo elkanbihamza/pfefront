@@ -12,4 +12,8 @@ export class NotificationService {
   getNotifications(): Observable<Notification[]> {
     return this.http.get<Notification[]>('/fsacnotif/getallnotifications');
   }
+
+  markAsViewed(id:number){
+    this.http.get<Notification>(`/fsacnotif/notifications/${id}`);
+  }
 }

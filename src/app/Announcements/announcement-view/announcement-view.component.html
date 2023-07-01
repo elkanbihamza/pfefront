@@ -6,9 +6,15 @@
     <a class="breadcrumb-separator">/</a>
     <a class="breadcrumb-link">{{ announcement.title }}</a>
     <div class="breadcrumb-button">
-      <button mat-mini-fab class="mat-button" aria-label="Example icon button with a menu icon">
+      <button mat-mini-fab class="mat-button" aria-label="Example icon button with a menu icon" [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
       </button>
+      
+      <mat-menu #menu="matMenu" class="dropdown-content">
+        <button mat-menu-item class="menu-button">Modifier</button>
+        <button mat-menu-item class="menu-button">Cacher</button>
+        <button mat-menu-item class="menu-button">Supprimer</button>
+      </mat-menu>
     </div>
   </div>
   <hr>
@@ -16,7 +22,7 @@
   <!-- <div *ngIf="announcement">
     <img [src]="announcement.image" alt="Announcement Image" />
     <h1>{{ announcement.title }}</h1>
-    <p>Créée par : {{ announcement.created_by }}</p>
+    
     <p>Créée le : {{ announcement.date }}</p>
     <p>Catégorie : <span *ngFor="let category of announcement.categories" class="announcement-category">  {{ category }},</span></p>
     <p>{{ announcement.body }}</p>
@@ -26,7 +32,7 @@
 
   <div *ngIf="announcement" class="announcement-container">
     <div class="announcement-image">
-      <img src="assets\{{announcement.image}}" alt="Announcement Image" />
+      <img src="assets\{{ announcement.image }}" alt="Announcement Image" />
     </div>
     <div class="infos-container">
       <div class="announcement-title">
@@ -46,9 +52,9 @@
           </span>
         </p>
         <p class="info-element">
+          <span class="centered-content">
           <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="groups"></mat-icon>
-          <span class="announcement-info">
-            <span *ngFor="let category of announcement.category" class="announcement-category">{{ category }},</span>
+          <span class="announcement-info" *ngFor="let category of announcement.category" class="announcement-category">{{ category }},</span>
           </span>
         </p>
         <div class="announcement-body">

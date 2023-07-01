@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   height: 80%;
-  margin: auto !important;
+  margin-top: 10%  !important;
 }
 
 .login-form {
@@ -17,7 +17,7 @@
   padding: 20px;
   background-color: #f1f1f1;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin:auto;
+  
 }
 
 .login-form mat-form-field {
@@ -35,3 +35,17 @@
   color: white !important;
   border-radius: 40px !important;
 }
+
+.text-container {
+  text-align: left;
+}
+
+.left-align {
+  text-align: left;
+}
+
+p{
+  color: var(--custom-primary) !important;
+  font-weight: 500;
+}
+

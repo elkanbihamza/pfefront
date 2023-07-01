@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Announcement } from 'src/app/models/announcement.model';
 import { AnnouncementService } from 'src/app/service/announcement.service';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-announcement-view',
@@ -10,11 +11,12 @@ import { AnnouncementService } from 'src/app/service/announcement.service';
 })
 export class AnnouncementViewComponent implements OnInit {
   announcement!: Announcement;
-  
-
+  notifications: any[] = [];
+  notificationCount = 0;
   constructor(
     private route: ActivatedRoute,
-    private apiService: AnnouncementService
+    private apiService: AnnouncementService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class AnnouncementViewComponent implements OnInit {
     this.apiService.getAnnouncement(announcementId).subscribe(
       (response: Announcement) => {
         this.announcement = response;
+        console.log(response);
       },
       (error: any) => {
         // Handle error
@@ -33,4 +36,19 @@ export class AnnouncementViewComponent implements OnInit {
       }
     );
   }
+
+  loadNotifications() {
+    this.notificationService.getNotifications().subscribe(
+      (response: any) => {
+        this.notifications = response;
+        this.notificationCount = this.notifications.length; // Update the notification count
+        console.log('response:', response); // Assign the retrieved notifications to the array
+      },
+      (error: any) => {
+        console.error('Error retrieving notifications:', error);
+      }
+    );
+  }
+
+  
 }

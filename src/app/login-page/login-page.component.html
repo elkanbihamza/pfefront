@@ -1,6 +1,11 @@
 <div class="login-container">
   <!-- <h2>Se connecter à votre compte</h2> -->
-  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form class="login-form" [formGroup]="loginForm">
+    <img width="120px" src="assets\FSAC LOGO.jpg" alt="Logo FSAC" class="logo">
+    <div class="text-container">
+      <p class="left-align">Bienvenue</p>
+      <h1 class="left-align">Se connecter à votre compte</h1>
+    </div>
     <mat-form-field appearance="outline">
         <mat-label>E-mail</mat-label>
         <input matInput placeholder="Saisissez l'adresse mail" formControlName="email" required>
@@ -18,7 +23,8 @@
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
-    <button mat-raised-button [disabled]="loginForm.invalid" class="submit-button">Se connecter</button>
-    <button mat-raised-button class="submit-button">Continuer en tant qu'invité</button>
+    <mat-error *ngIf="loginError"> Veuillez vérifier vos informations</mat-error>
+    <button mat-raised-button [disabled]="loginForm.invalid" class="submit-button" (click)="onSubmit()">Se connecter</button>
+    <button mat-raised-button class="submit-button" (click)="loginAsGuest()">Continuer en tant qu'invité</button>
   </form>
 </div>

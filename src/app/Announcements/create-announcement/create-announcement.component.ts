@@ -1,9 +1,12 @@
+import { Announcement } from './../../models/announcement.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { AnnouncementService } from 'src/app/service/announcement.service';
 import { CategoryApiService } from 'src/app/service/category.service';
+import { ScheduleDialogComponent } from '../schedule-dialog/schedule-dialog.component';
 //import { AnnouncementApiService } from '../service/announcement.service';
 
 @Component({
@@ -19,15 +22,20 @@ export class CreateAnnouncementComponent implements OnInit {
   categories: Category[] = [];
   flatCategories: Category[] = [];
   selectedCategory: string[] = [];
+  announcementData: any ;
   
 
   constructor(
+    private dialog: MatDialog,
     // private api: AnnouncementApiService,
     private formBuilder: FormBuilder,
     private catapi: CategoryApiService,
     private api : AnnouncementService,
-    private router : Router
-  ) { }
+    private router : Router,
+    @Inject() public data: any
+  ) {
+    this.announcementData = data.Announcement;
+   }
 
   ngOnInit(): void {
     this.announcementForm = this.formBuilder.group({
@@ -41,7 +49,7 @@ export class CreateAnnouncementComponent implements OnInit {
   }
 
   fetchCategories() {
-    this.catapi.getCategories().subscribe(
+    this.catapi.getOwnCategories().subscribe(
       categories => {
         this.categories = categories;
         this.flattenCategories(categories);
@@ -118,6 +126,22 @@ export class CreateAnnouncementComponent implements OnInit {
         console.error('Error:', error);
       }
     );
+  }
+
+  openDialog(): void {
+    const dialogConfig: MatDialogConfig = {
+      width: '500px',
+      data : {
+        title: 'Créez un nouvel utilisateur'
+      },
+      panelClass: 'dialog'
+    };
+
+    const dialogRef = this.dialog.open(ScheduleDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed with result:', result);
+    });
   }
 
 }

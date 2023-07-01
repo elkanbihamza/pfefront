@@ -31,6 +31,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { AuthGuardService } from './service/auth-guard.service';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { ScheduleDialogComponent } from './Announcements/schedule-dialog/schedule-dialog.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -43,6 +45,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     NotificationsComponent,
     AnnouncementViewComponent,
     FileUploadComponent,
+    ScheduleDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
+    MatMenuModule
 
 
   ],

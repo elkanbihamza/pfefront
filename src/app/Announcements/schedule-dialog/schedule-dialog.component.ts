@@ -1,6 +1,5 @@
-// schedule-dialog.component.ts
 import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-schedule-dialog',
@@ -8,8 +7,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./schedule-dialog.component.css']
 })
 export class ScheduleDialogComponent {
-  selectedDate!: Date;
-  selectedTime!: string;
-
-  constructor(public dialogRef: MatDialogRef<ScheduleDialogComponent>) { }
+  constructor(private route : Router){}
+  onSubmit(){
+    this.route.navigateByUrl('/annonces');
+  }
 }

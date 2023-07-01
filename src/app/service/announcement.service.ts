@@ -15,12 +15,16 @@ export class AnnouncementService {
     return this.http.get<Announcement[]>('/fsacnotif/getallannounces');
   }
 
-  getAnnouncement(Id: number): Observable<Announcement> {
+  getAnnouncement(Id: number): Observable<Announcement>  {
     const url = `/fsacnotif/announces/${Id}`;
     return this.http.get<Announcement>(url);
   }
 
   createAnnouncement(announcement: any): Observable<Announcement> {
     return this.http.post<Announcement>('/fsacnotif/traitementfile', announcement);
+  }
+
+  updateAnnouncement(announcement: any){
+    return this.http.put<Announcement>('/fsacnotif/announces', announcement);
   }
 }

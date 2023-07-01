@@ -14,6 +14,31 @@ export class AuthService {
     }
 
     logout(){
-      localStorage.removeItem('session');
+      localStorage.clear();
+    }
+
+    loginAsGuest(){
+      return this.http.get('/fsacnotif/getconnection');
+    }
+
+    hasAnnouncementCrationAccess(){
+      const is_responsible = localStorage.getItem('is_responsible');
+      const is_admin = localStorage.getItem('is_admin');
+      if(is_responsible === 'true'){
+        return true;
+      }
+
+      if(is_admin === 'true'){
+        return true;
+      }
+      return false;
+    }
+
+    hasSettingsAccess(){
+      const is_admin = localStorage.getItem('is_admin');
+      if(is_admin === 'true'){
+        return true;
+      }
+      return false;
     }
 }

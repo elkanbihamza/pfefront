@@ -15,6 +15,10 @@ getCategories(): Observable<Category[]> {
   return this.http.get<Category[]>('/fsacnotif/getallcategories');
 }
 
+getOwnCategories(): Observable<Category[]> {
+  return this.http.get<Category[]>('/fsacnotif/responsablecategories');
+}
+
 getCategoryByCode(categoryCode: string): Observable<Category> {
   const url = `/fsacnotif/categories/${categoryCode}`;
   return this.http.get<Category>(url);
