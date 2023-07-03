@@ -1,35 +1,12 @@
 import {NestedTreeControl} from '@angular/cdk/tree';
-import {Component} from '@angular/core';
-import {MatTreeNestedDataSource, MatTreeModule} from '@angular/material/tree';
+import { Component, OnInit} from '@angular/core';
+import { MatTreeNestedDataSource, MatTreeModule} from '@angular/material/tree';
+import { Category } from 'src/app/models/category.model';
+import { CategoryApiService } from 'src/app/service/category.service';
+import { CreateCategoryComponent } from '../create-category/create-category.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-/**
- * Food data with nested structure.
- * Each node has a name and an optional list of children.
- */
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
-}
 
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Fruit',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
-  },
-  {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [{name: 'Broccoli'}, {name: 'Brussels sprouts'}],
-      },
-      {
-        name: 'Orange',
-        children: [{name: 'Pumpkins'}, {name: 'Carrots'}],
-      },
-    ],
-  },
-];
 
 /**
  * @title Tree with nested nodes
@@ -40,14 +17,75 @@ const TREE_DATA: FoodNode[] = [
   styleUrls: ['./categories-list.component.css']
 })
 
-export class CategoriesListComponent {
-  treeControl = new NestedTreeControl<FoodNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
+export class CategoriesListComponent implements OnInit {
+  
+  treeControl = 
+    new NestedTreeControl<Category>(node => node.subcategories);
+    dataSource!: MatTreeNestedDataSource<Category>;
 
-  constructor() {
-    this.dataSource.data = TREE_DATA;
+  ngOnInit(): void {
+   this.fetchCategories();
   }
 
-  hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
+  constructor(private api : CategoryApiService, private dialog: MatDialog) {
+    this.dataSource = new MatTreeNestedDataSource<Category>();
+  }
+
+  hasChild = (_: number, node: Category) =>
+    !!node.subcategories && node.subcategories.length > 0;
+
+    fetchCategories() {
+      this.api.getCategories().subscribe((data: Category[]) => {
+        console.log(data);
+        this.dataSource.data = data;
+      });
+    }
+
+    openDialog(): void {
+      const dialogConfig: MatDialogConfig = {
+        width: '500px',
+        data : {
+          title: 'Créez une nouvelle catégorie'
+        },
+        panelClass: 'dialog'
+      };
+  
+      const dialogRef = this.dialog.open(CreateCategoryComponent, dialogConfig);
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog closed with result:', result);
+        if (result) {
+          this.refreshCategoriesTable();
+        }
+      });
+    }
+
+    openEditDialog(node: Category): void {
+      const dialogConfig: MatDialogConfig = {
+        width: '500px',
+        data:{
+          category: node,
+          title : 'Modifiez cette catégorie',
+          isEdit: true
+        },
+        panelClass: 'dialog' // Add a custom CSS class to the dialog
+      };
+  
+      const dialogRef = this.dialog.open(CreateCategoryComponent, dialogConfig);
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog closed with result:', result);
+        if (result) {
+          this.refreshCategoriesTable();
+        }
+      });
+    }
+
+    refreshCategoriesTable(): void {
+      this.api.getCategories().subscribe((data: Category[]) => {
+        this.dataSource.data = data;
+      });
+    }
 }
+
 

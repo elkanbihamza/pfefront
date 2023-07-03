@@ -55,4 +55,6 @@ export class AnnouncementsListComponent implements OnInit {
     }
     return false;
   }
+
+  
 }

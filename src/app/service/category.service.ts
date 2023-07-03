@@ -29,8 +29,8 @@ createCategory(category : Category): Observable<Category> {
 }
 
 updateCategory(category : Category): Observable<Category> {
-  const url = `/fsacnotif/categories/${category.code}`;
-  return this.http.put<Category>(url, category);
+  const url = `/fsacnotif/updatecategorie`;
+  return this.http.post<Category>(url, category);
 }
 
 deleteCategory(categoryCode : string): Observable<any> {

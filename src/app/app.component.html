@@ -41,9 +41,9 @@
       <img width="120px" src="assets\output-onlinepngtools.png" alt="Logo FSAC" class="logo" routerLink="">
       <span class="example-spacer"></span>
       <app-notifications *ngIf="!isSpecificComponentActive"></app-notifications>
-      <!-- <button mat-icon-button routerLink="/settings" *ngIf=" !isSpecificComponentActive && isGuest" >
+      <button mat-icon-button routerLink="/settings" *ngIf=" !isSpecificComponentActive && isGuest" >
         <mat-icon>settings</mat-icon>
-      </button> -->
+      </button>
       <button mat-icon-button routerLink="/login" (click)="logout()" *ngIf="!isSpecificComponentActive && isGuest" >
         <mat-icon>logout</mat-icon>
       </button>

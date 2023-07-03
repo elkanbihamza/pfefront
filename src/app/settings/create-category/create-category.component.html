@@ -1,5 +1,5 @@
 <div class="mat-dialog-container">
-  <h2 mat-dialog-title>Titre</h2>
+  <h2 mat-dialog-title>{{title}}</h2>
   <mat-dialog-content>
     <form [formGroup]="categoryForm">
 
@@ -20,7 +20,7 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Appartient à la catégorie</mat-label>
-          <mat-select formControlName="subcategories">
+          <mat-select formControlName="ParentCategory">
             <ng-container *ngFor="let category of flatCategories">
               <mat-option [value]="category.code">
                 {{ category.code }} - {{ category.title }}

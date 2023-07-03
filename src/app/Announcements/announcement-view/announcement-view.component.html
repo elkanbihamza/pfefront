@@ -11,23 +11,14 @@
       </button>
       
       <mat-menu #menu="matMenu" class="dropdown-content">
-        <button mat-menu-item class="menu-button">Modifier</button>
-        <button mat-menu-item class="menu-button">Cacher</button>
-        <button mat-menu-item class="menu-button">Supprimer</button>
+        <button mat-menu-item class="menu-button" (click)="openEditor(announcement.id)"> <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit" ></mat-icon>Modifier</button>
+        <button mat-menu-item class="menu-button" *ngIf="!announcement.is_hidden" (click)="hideAnnouncement(announcement.id)"> <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="visibility_off" ></mat-icon>Cacher</button>
+        <button mat-menu-item class="menu-button" *ngIf="announcement.is_hidden" (click)="hideAnnouncement(announcement.id)"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="visibility" ></mat-icon>Réactiver</button>
+        <button mat-menu-item class="menu-button" (click)="deleteAnnouncement(announcement.id)"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete" ></mat-icon>Supprimer</button>
       </mat-menu>
     </div>
   </div>
   <hr>
-
-  <!-- <div *ngIf="announcement">
-    <img [src]="announcement.image" alt="Announcement Image" />
-    <h1>{{ announcement.title }}</h1>
-    
-    <p>Créée le : {{ announcement.date }}</p>
-    <p>Catégorie : <span *ngFor="let category of announcement.categories" class="announcement-category">  {{ category }},</span></p>
-    <p>{{ announcement.body }}</p>
-
-  </div> -->
 
 
   <div *ngIf="announcement" class="announcement-container">
@@ -36,7 +27,12 @@
     </div>
     <div class="infos-container">
       <div class="announcement-title">
-        <h1>{{ announcement.title }}</h1>
+        <span class="info-element">
+          <span class="centered-content">
+            <h1 >{{ announcement.title }}</h1>
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="visibility_off" *ngIf="announcement.is_hidden"></mat-icon>
+          </span>
+        </span>
       </div>
       <div class="announcement-infos">
         <p class="info-element">

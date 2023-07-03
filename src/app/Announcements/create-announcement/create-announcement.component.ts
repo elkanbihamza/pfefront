@@ -2,7 +2,7 @@ import { Announcement } from './../../models/announcement.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { AnnouncementService } from 'src/app/service/announcement.service';
 import { CategoryApiService } from 'src/app/service/category.service';
@@ -22,19 +22,17 @@ export class CreateAnnouncementComponent implements OnInit {
   categories: Category[] = [];
   flatCategories: Category[] = [];
   selectedCategory: string[] = [];
-  announcementData: any ;
+  announcementData: Announcement | null = null;
   
 
   constructor(
     private dialog: MatDialog,
-    // private api: AnnouncementApiService,
     private formBuilder: FormBuilder,
     private catapi: CategoryApiService,
     private api : AnnouncementService,
     private router : Router,
-    @Inject() public data: any
+    private route : ActivatedRoute
   ) {
-    this.announcementData = data.Announcement;
    }
 
   ngOnInit(): void {
@@ -44,7 +42,10 @@ export class CreateAnnouncementComponent implements OnInit {
       image: ['', [Validators.required]],
       category: []
     });
-
+    const announcementId = this.route.snapshot.params['id'];
+    if (announcementId) {
+      this.loadAnnouncement(announcementId);
+    }
     this.fetchCategories();
   }
 
@@ -112,21 +113,37 @@ export class CreateAnnouncementComponent implements OnInit {
     formData.append('category', JSON.stringify(this.announcementForm.get('category')?.value));
     formData.append('body', this.announcementForm.get('body')?.value);
     formData.append('file', this.announcementForm.get('image')?.value);
-
+    formData.append('id', this.route.snapshot.params['id']);
+  
     formData.forEach((value, key) => {
       console.log(key, value);
-    })
-
-    this.api.createAnnouncement(formData).subscribe(
-      response => {
-        console.log('Success:', response);
-        this.router.navigate(['/annonces']);
-      },
-      error => {
-        console.error('Error:', error);
-      }
-    );
+    });
+  
+    if (this.announcementData) {
+      // Update existing announcement
+      this.api.updateAnnouncement(formData).subscribe(
+        response => {
+          console.log('Update successful:', response);
+          this.router.navigate(['/annonces']);
+        },
+        error => {
+          console.error('Update failed:', error);
+        }
+      );
+    } else {
+      // Create new announcement
+      this.api.createAnnouncement(formData).subscribe(
+        response => {
+          console.log('Creation successful:', response);
+          this.router.navigate(['/annonces']);
+        },
+        error => {
+          console.error('Creation failed:', error);
+        }
+      );
+    }
   }
+  
 
   openDialog(): void {
     const dialogConfig: MatDialogConfig = {
@@ -142,6 +159,27 @@ export class CreateAnnouncementComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
     });
+  }
+  loadAnnouncement(id: number): void {
+    this.api.getAnnouncement(id).subscribe(
+      (announcement: Announcement) => {
+        this.announcementData = announcement;
+        this.populateFormFields();
+      },
+      error => {
+        console.error('Failed to load announcement:', error);
+      }
+    );
+  }
+
+  populateFormFields(): void {
+    if (this.announcementData) {
+      this.announcementForm.patchValue({
+        title: this.announcementData.title,
+        body: this.announcementData.body,
+        category: this.announcementData.category
+      });
+    }
   }
 
 }

@@ -24,6 +24,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SettingsComponent } from './settings.component';
+import { MatTreeModule } from '@angular/material/tree';
 
 
 
@@ -57,7 +58,8 @@ import { SettingsComponent } from './settings.component';
     MatDialogModule,
     MatSelectModule,
     MatOptionModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTreeModule
 
 
   ],

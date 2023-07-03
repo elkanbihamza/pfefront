@@ -15,7 +15,12 @@
         <img src="assets\{{announcement.image}}" alt="Announcement Image">
       </div>
       <div class="card-content">
-        <h3>{{ announcement.title }}</h3>
+        <span class="info-element">
+          <h3>{{ announcement.title }}</h3>
+          <mat-icon *ngIf="announcement.is_hidden" aria-hidden="false" aria-label="Example home icon" fontIcon="visibility_off"></mat-icon>
+        </span>
+        
+        
         <div class="announcement-infos">
           <p class="info-element">
             <span class="centered-content">

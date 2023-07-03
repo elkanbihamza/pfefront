@@ -58,6 +58,7 @@
 }
 
 .info-element{
+  display: flex !important;
   margin-right: 5% !important;
 }
 mat-icon{

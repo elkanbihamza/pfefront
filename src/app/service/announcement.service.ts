@@ -1,7 +1,7 @@
+import { Announcement } from 'src/app/models/announcement.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Announcement } from '../models/announcement.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,15 @@ export class AnnouncementService {
     return this.http.post<Announcement>('/fsacnotif/traitementfile', announcement);
   }
 
-  updateAnnouncement(announcement: any){
-    return this.http.put<Announcement>('/fsacnotif/announces', announcement);
+  updateAnnouncement(announcement: any) {
+    return this.http.post<Announcement>(`/fsacnotif/updateannounces`, announcement);
+  }
+
+  hideAnnouncement(id:number){
+    return this.http.put<Announcement>(`/fsacnotif/announces/${id}`,{});
+  }
+
+  deleteAnnouncement(id:number){
+    return this.http.delete<Announcement>(`/fsacnotif/announces/${id}`);
   }
 }

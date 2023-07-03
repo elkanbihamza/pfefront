@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'annonces', component: AnnouncementsListComponent, canActivate:[AuthGuardService] },
   { path: 'login', component: LoginPageComponent },
   { path: 'creerannonce', component: CreateAnnouncementComponent, canActivate:[AuthGuardService] },
+  { path: 'edit/:id', component: CreateAnnouncementComponent },
   {
     path: 'settings',canActivate:[AuthGuardService], component: SettingsComponent, children: [
       { path: '', redirectTo: 'users', pathMatch: 'full' },

@@ -66,12 +66,6 @@
   margin-bottom: 0;
 }
 
-.info-element {
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-}
-
 .centered-content {
   display: flex;
   align-items: center;
@@ -80,6 +74,7 @@
 
 
 .info-element {
+  display: flex;
   margin-right: 5% !important;
 }
 

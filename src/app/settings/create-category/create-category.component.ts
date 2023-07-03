@@ -15,6 +15,8 @@ export class CreateCategoryComponent implements OnInit {
   categories: Category[] = [];
   flatCategories: Category[] = [];
   selectedCategory: string[] = [];
+  title!: string;
+  isEdit!: boolean;
 
   constructor(
     private api: CategoryApiService,
@@ -22,24 +24,35 @@ export class CreateCategoryComponent implements OnInit {
     private dialogRef: MatDialogRef<CreateCategoryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.isEdit = data.isEdit;
     this.categoryData = data.category;
   }
 
   ngOnInit(): void {
+    this.isEdit = this.data.isEdit;
+
     this.categoryForm = this.formBuilder.group({
-      id: [this.categoryData?.id || ''],
-      code: [this.categoryData?.code || '', [Validators.required]],
+      code: [this.categoryData?.code || '', this.isEdit ? [] : [Validators.required]],
       title: [this.categoryData?.title || '', [Validators.required]],
-      subcategories: [this.categoryData?.subcategories || []]
+      ParentCategory: [this.categoryData?.ParentCategory || [], this.isEdit ? [] : Validators.required]
     });
+
+    if (this.isEdit) {
+      this.categoryForm.controls['code'].enable();
+      this.categoryForm.controls['ParentCategory'].disable();
+    }
+
+    this.title = this.data.title;
     this.fetchCategories();
   }
 
   onSubmit(): void {
     console.log(this.categoryForm.value);
-    const categorydata = this.categoryForm.value;
-    if (categorydata.id) {
-      this.api.updateCategory(categorydata).subscribe(
+    const categoryData = this.categoryForm.value;
+  
+    if (categoryData.code && categoryData.code.trim().length > 0) {
+      categoryData.ParentCategory = this.categoryData.ParentCategory;
+      this.api.updateCategory(categoryData).subscribe(
         response => {
           console.log('Update successful:', response);
           this.dialogRef.close(true);
@@ -49,7 +62,7 @@ export class CreateCategoryComponent implements OnInit {
         }
       );
     } else {
-      this.api.createCategory(categorydata).subscribe(
+      this.api.createCategory(categoryData).subscribe(
         response => {
           console.log('Registration successful:', response);
           this.dialogRef.close(true);
@@ -60,6 +73,8 @@ export class CreateCategoryComponent implements OnInit {
       );
     }
   }
+  
+
 
   fetchCategories() {
     this.api.getCategories().subscribe(
